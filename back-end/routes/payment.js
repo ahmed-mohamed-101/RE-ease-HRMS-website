@@ -25,7 +25,7 @@ router.post("/monthly", async (req, res) => {
       after_completion : {
         type: 'redirect',
         redirect: {
-          url : 'http://localhost:4200/',
+          url : 'http://localhost:4200/home',
         }
       },
     });
@@ -48,7 +48,7 @@ router.post("/annually", async (req, res) => {
       after_completion : {
         type: 'redirect',
         redirect: {
-          url : 'http://localhost:4200/',
+          url : 'http://localhost:4200/home',
         }
       },
     });
