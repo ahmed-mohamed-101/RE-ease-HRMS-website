@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const { body } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 
 const admin = require('../models/admin');
 
@@ -23,6 +23,12 @@ router.post('/adminSignup',
       .normalizeEmail(),
     body('password').trim().isLength({ min: 7 }),
     body('company_name').trim().not().isEmpty(),
+    (req, res) => {
+      const result = validationResult(req);
+      if (!result.isEmpty()) {
+        return res.send({ errors: result.array() });
+      }
+    }
   ], adminAuth.signup);
 
 router.post('/adminLogin', adminAuth.login);
