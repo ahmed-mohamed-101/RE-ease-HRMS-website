@@ -33,7 +33,7 @@ export class SignupComponent {
          {
             next:(response)=>{
            
-          
+             console.log(response)
               this._Router.navigate(['/login'])
               this.isloading=false;
           

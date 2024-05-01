@@ -40,17 +40,19 @@ loginform:FormGroup=this._FormBuilder.group({
          {
             next:(response)=>{
            
-          if(response.message == 'success'){
+              console.log(response)
+          
               this._Router.navigate(['/home'])
               this.isloading=false;
               localStorage.setItem('etoken',response.token)
+          
 
-          }
+          
  
  
             },
             error:(err:HttpErrorResponse)=>{
-               // console.log(err.error.message)
+              //  console.log(err.error.message)
                this.msgerror=err.error.message
                this.isloading=false;
  
