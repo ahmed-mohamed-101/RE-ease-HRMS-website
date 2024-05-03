@@ -1,0 +1,441 @@
+.main-bg{
+    background-color: #F7F7F7;
+}
+
+.main-header
+{
+    font-size: 40px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.main-padding
+{
+    padding-block: 80px;
+}
+
+.pay-btn{
+    margin:auto;
+ width: 80%;
+  border-radius: 8px;
+  background-color: #f1efff;
+  color: var(--main-color);
+}
+
+.pay-btn:hover{
+    color: white;
+    background-color: var(--main-color);
+}
+
+
+nav .active
+{
+  color: red !important;
+}
+
+#navbar-example {
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+  }
+
+  #navbar-example {
+    z-index: 9999;
+  }
+
+.transparent-navbar {
+    background-color: transparent !important;
+  }
+
+.vector{
+    width: 31.7px;
+    height: 34.2px;
+    margin: 0 0 0 7.3px;
+    background-color: #36ccff;
+}
+
+
+#navbar-example img{
+    width: 116px;
+    height: 56px;
+}
+
+
+button {
+    width: 168px;
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 31px 0 0;
+    padding: 16px;
+    border-radius: 8px;
+    border: solid 2px #fff;
+    background-color: transparent ;
+    color: white;
+  }
+
+
+  .main-header{
+    color: #39364e;
+  }
+
+.Frame-7 {
+    width: 1119px;
+    height: 153px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 40px 32px;
+    border-radius: 20px;
+    background-color: rgba(33, 37, 43, 0.5);
+  }
+
+
+.photo{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.508) 0% 100%),url('../../../assets/images/Frame 12169.png');
+    background-size: 100%;
+  padding: 80px;
+  color: white;
+
+
+}
+
+
+header#home
+{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.508) 0% 100%),url('../../../assets/images/home.jpg');
+    height: 100vh;
+   background-size: 120%;
+    color: white;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    width: 110%;
+    margin-left: -5%;
+}
+
+header h5
+{
+    font-size: 50px;
+    font-weight: 800;
+}
+
+header p
+{
+    font-size: 60px;
+    font-weight: 400;
+}
+
+header ul li a 
+{
+    color: white;
+    background-color: #112529;
+    border-radius: 50%;
+    padding: 15%;
+}
+
+header ul
+{
+    /* border: 3px solid red; */
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+}
+
+#about picture img
+{
+    /* width: 85%; */
+    width: 100%;
+
+}
+
+
+
+.about-info h3
+{
+    font-size: 30px;
+    font-weight: 800;
+}
+
+
+.parent
+{
+    background-color: white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    height: 20px;
+    margin-block: 25px;
+
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.child
+{
+    background-color:#1C1C1C;
+    color: white;
+ 
+    box-sizing: border-box;
+    padding-inline:8px;
+   font-size: .9rem;
+   
+    border-radius: 5px;
+    height:100%;
+    display: flex;
+}
+
+.child1{
+    width: 95%;
+}
+
+.child2{
+    width: 80%;
+}
+
+.child3
+{
+    width: 90%;
+}
+
+.about-info button
+{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 7px 20px;
+    font-size: .9rem;
+
+}
+
+.bot1 ,.bot2:hover
+{
+    background-color: #1C1C1C;
+    color: white;
+}
+
+.bot1:hover ,.bot2
+{
+    color: #343434;
+    background-color: white;
+}
+
+.bot1 ,.bot2{
+    transition: .5s background-color , .5s color;
+}
+
+
+
+.service ,#subscribtion .sub
+{
+    /* background-color: white; */
+    padding: 40px 30px;
+    box-shadow: 0 0 2px rgba(65, 65, 65, 0.268) ;
+}
+
+
+
+.service h6 ,#subscribtion .sub h6
+{
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.service p ,#subscribtion .sub p
+{
+    color:#748182;
+
+}
+
+
+
+
+#portfolio ul
+{
+    margin-bottom: 40px;
+}
+
+
+.activ
+{
+    border-bottom: 2px solid black;
+}
+
+.portfolio-card{
+
+    height:300px;
+    
+    background-size: cover;
+
+}
+
+
+
+
+
+
+
+.portfolio-layer {
+    height: 95%;
+    width: 95%;
+    background-color: rgba(255, 255, 255, 0.791);
+    transform: translate(2.5%,7%);
+    opacity: 0;
+    transition: .5s opacity, .5s transform;
+    /* text-align: center; */
+}
+
+.portfolio-card:hover .portfolio-layer
+{
+    opacity: 1;
+    transform: translate(2.5%,2.5%);
+}
+
+.portfolio-layer h6
+{
+    font-size: 15px;
+    font-weight: 700;
+    transform: translate(125px ,140px);
+    padding-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.portfolio-layer i
+{
+    font-size: 12px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 50%;
+    transform: translate(130px ,140px);
+}
+
+.portfolio-layer i:hover{
+    background-color:white;
+    color: black;
+}
+
+
+
+
+
+
+#testimonials .carousel-indicators [data-bs-target] {
+
+    width: 8px;
+    height: 8px;
+    background-color:#869791;
+    border-radius: 50%;
+}
+
+
+
+
+
+.team-layer
+{
+    background-color: rgba(255, 255, 255, 0.95);
+    height: 75%;
+    width: 95%;
+    position: absolute;
+    top: 2.5%;
+    left:2.5% ;
+    opacity: 0;
+    transform: rotateY(180deg) scale(0.5, 0.5);
+    transition: 0.5s;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.team-layer ul
+{
+    
+
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.team-layer ul i
+{
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.team-layer ul i:hover{
+  background-color: white;
+  color: black;
+}
+
+#team .card:hover .team-layer
+{
+    transform: rotateY(360deg) scale(1, 1);
+    opacity: 1;
+}
+
+
+
+.team-img
+{
+    overflow: hidden;
+}
+
+.team-img img
+{
+    transition: .5s transform ;
+}
+
+#team .card:hover .team-img img
+{
+    transform: scale(1.2 ,1.2);
+}
+
+
+
+footer
+{
+    background-color: #1C1C1C;
+    display: grid;
+    place-content: center;
+}
+
+footer p
+{
+    color:#748182;
+    padding-block: 20px;
+}
+
+
+
+
+.contact-box i
+{
+    background-color:#F7F7F7;
+    font-size: 25px;
+    color:black;
+    padding: 20px;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    transition: .5s background-color , .5s color;
+}
+
+
+
+
+.contact-box:hover i{
+    background-color: black;
+    color: white;
+}

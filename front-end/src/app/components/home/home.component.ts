@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PaymentService } from 'src/app/shared/services/payment.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { PaymentService } from 'src/app/shared/services/payment.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-constructor(private _PaymentService:PaymentService){}
+constructor(private _PaymentService:PaymentService,private sanitizer: DomSanitizer){}
 
 handlepaymentannually():void{
   this._PaymentService.checkoutannually().subscribe({
@@ -27,6 +28,13 @@ handlepaymentmonthly():void{
  })
 }
 
+
+email: any;
+
+ngOnInit() {
+  const email = 'RealeStateEase@gmail.com';
+  this.email = this.sanitizer.bypassSecurityTrustHtml(email);
+}
 
 
 }
