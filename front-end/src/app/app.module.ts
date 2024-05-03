@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import{HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { CheckoutComponent } from './components/checkout/checkout.component'
+import { RouterModule, Routes } from '@angular/router';
 
 
 
@@ -17,9 +17,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component'
     AppComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent,
-    CheckoutComponent,
-  
+    HomeComponent,  
   ],
   imports: [
     BrowserModule,

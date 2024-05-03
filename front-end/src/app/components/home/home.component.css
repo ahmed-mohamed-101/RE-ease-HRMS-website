@@ -131,102 +131,6 @@ header p
     font-weight: 400;
 }
 
-header ul li a 
-{
-    color: white;
-    background-color: #112529;
-    border-radius: 50%;
-    padding: 15%;
-}
-
-header ul
-{
-    /* border: 3px solid red; */
-    display: flex;
-    justify-content: space-between;
-    width: 25%;
-}
-
-#about picture img
-{
-    /* width: 85%; */
-    width: 100%;
-
-}
-
-
-
-.about-info h3
-{
-    font-size: 30px;
-    font-weight: 800;
-}
-
-
-.parent
-{
-    background-color: white;
-    border-radius: 5px;
-    box-sizing: border-box;
-    height: 20px;
-    margin-block: 25px;
-
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
-}
-
-.child
-{
-    background-color:#1C1C1C;
-    color: white;
- 
-    box-sizing: border-box;
-    padding-inline:8px;
-   font-size: .9rem;
-   
-    border-radius: 5px;
-    height:100%;
-    display: flex;
-}
-
-.child1{
-    width: 95%;
-}
-
-.child2{
-    width: 80%;
-}
-
-.child3
-{
-    width: 90%;
-}
-
-.about-info button
-{
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 7px 20px;
-    font-size: .9rem;
-
-}
-
-.bot1 ,.bot2:hover
-{
-    background-color: #1C1C1C;
-    color: white;
-}
-
-.bot1:hover ,.bot2
-{
-    color: #343434;
-    background-color: white;
-}
-
-.bot1 ,.bot2{
-    transition: .5s background-color , .5s color;
-}
-
-
 
 .service ,#subscribtion .sub
 {
@@ -250,160 +154,10 @@ header ul
 
 }
 
-
-
-
-#portfolio ul
-{
-    margin-bottom: 40px;
-}
-
-
 .activ
 {
     border-bottom: 2px solid black;
 }
-
-.portfolio-card{
-
-    height:300px;
-    
-    background-size: cover;
-
-}
-
-
-
-
-
-
-
-.portfolio-layer {
-    height: 95%;
-    width: 95%;
-    background-color: rgba(255, 255, 255, 0.791);
-    transform: translate(2.5%,7%);
-    opacity: 0;
-    transition: .5s opacity, .5s transform;
-    /* text-align: center; */
-}
-
-.portfolio-card:hover .portfolio-layer
-{
-    opacity: 1;
-    transform: translate(2.5%,2.5%);
-}
-
-.portfolio-layer h6
-{
-    font-size: 15px;
-    font-weight: 700;
-    transform: translate(125px ,140px);
-    padding-bottom: 8px;
-    letter-spacing: 2px;
-}
-
-.portfolio-layer i
-{
-    font-size: 12px;
-    background-color: black;
-    color: white;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 50%;
-    transform: translate(130px ,140px);
-}
-
-.portfolio-layer i:hover{
-    background-color:white;
-    color: black;
-}
-
-
-
-
-
-
-#testimonials .carousel-indicators [data-bs-target] {
-
-    width: 8px;
-    height: 8px;
-    background-color:#869791;
-    border-radius: 50%;
-}
-
-
-
-
-
-.team-layer
-{
-    background-color: rgba(255, 255, 255, 0.95);
-    height: 75%;
-    width: 95%;
-    position: absolute;
-    top: 2.5%;
-    left:2.5% ;
-    opacity: 0;
-    transform: rotateY(180deg) scale(0.5, 0.5);
-    transition: 0.5s;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-}
-
-.team-layer ul
-{
-    
-
-    /* border: 2px solid red; */
-    display: flex;
-    justify-content: space-around;
-
-}
-
-.team-layer ul i
-{
-    background-color: black;
-    border: 1px solid black;
-    color: white;
-    padding: 10px;
-    border-radius: 50%;
-    margin-left: 10px;
-}
-
-.team-layer ul i:hover{
-  background-color: white;
-  color: black;
-}
-
-#team .card:hover .team-layer
-{
-    transform: rotateY(360deg) scale(1, 1);
-    opacity: 1;
-}
-
-
-
-.team-img
-{
-    overflow: hidden;
-}
-
-.team-img img
-{
-    transition: .5s transform ;
-}
-
-#team .card:hover .team-img img
-{
-    transform: scale(1.2 ,1.2);
-}
-
-
 
 footer
 {
@@ -432,7 +186,9 @@ footer p
     transition: .5s background-color , .5s color;
 }
 
-
+.fa-brands .fa-cc-visa,.fa-location-dot,.fa-envelope,.fa-phone,.fa-person-circle-check,.fa-users-gear, .fa-building-lock {
+    color: var(--main-color) !important;
+}
 
 
 .contact-box:hover i{

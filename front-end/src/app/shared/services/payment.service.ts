@@ -10,12 +10,16 @@ export class PaymentService {
 
   constructor(private _HttpClient:HttpClient ,private _Router:Router) { }
 
+  
+
   checkoutannually():Observable<any>{
-    return this._HttpClient.post(`http://localhost:3000/payment/annually`,{})
+    return this._HttpClient.post(`http://localhost:3000/payment/annually`,
+    {token:localStorage.getItem('etoken')})     
   }
 
   checkoutmonthly():Observable<any>{
-    return this._HttpClient.post(`http://localhost:3000/payment/monthly`,{})
+    return this._HttpClient.post(`http://localhost:3000/payment/monthly`,
+    {token:localStorage.getItem('etoken')})
   }
 
 
