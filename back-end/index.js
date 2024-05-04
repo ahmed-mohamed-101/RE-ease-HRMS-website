@@ -18,8 +18,6 @@ const cors = require("cors");
 
 app.use(cors());
 
-app.use(bodyParser.json());
-
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
@@ -31,10 +29,12 @@ app.use((req, res, next) => {
         "Content-Type, Accept, X-Custom-Header, Authorization"
     );
     if (req.method === "OPTIONS") {
-    return res.status(200).end();
+        return res.status(200).end();
     }
     next();
 });
+
+app.use(bodyParser.json());
 
 app.use("/adminAuth", adminAuth);
 

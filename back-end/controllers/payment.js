@@ -26,15 +26,6 @@ const monthly = async (req, res) => {
         }
       },
     });
-    
-    const secret = "secretfortoken" 
-    const token = req.body.token;
-    const verify = jwt.verify(token,secret)
-    const {email} = verify;
-    const customer = await stripe.customers.search({query: `email:"${email}"`,});
-    const paymentId = customer.data[0].id;
-    
-    await admin.updatePaymentId(paymentId, email);
 
     const paymentLinkUrl = paymentLink.url;
     res.json({ url: paymentLinkUrl });
@@ -45,6 +36,7 @@ const monthly = async (req, res) => {
 
 const annually = async (req, res) => {
   try {
+    
     const paymentLink = await stripe.paymentLinks.create({
       line_items: [
         {
@@ -55,27 +47,36 @@ const annually = async (req, res) => {
       after_completion : {
         type: 'redirect',
         redirect: {
-          url : 'http://localhost:4200/home',
+          url : 'http://localhost:4200/home2',
         }
       },
     });
+    const paymentLinkUrl = paymentLink.url;
+    res.json({ url: paymentLinkUrl });
+    
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+};
+
+const confirmPayment = async (req, res) => {
+  try {
     const secret = "secretfortoken" 
     const token = req.body.token;
     const verify = jwt.verify(token,secret)
     const {email} = verify;
     const customer = await stripe.customers.search({query: `email:"${email}"`,});
     const paymentId = customer.data[0].id;
-    
     await admin.updatePaymentId(paymentId, email);
 
-    const paymentLinkUrl = paymentLink.url;
-    res.json({ url: paymentLinkUrl });
+    res.json( "paymentId added to the user" );
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
-};
+}
 
 module.exports = {
   monthly,
   annually,
+  confirmPayment
 };
