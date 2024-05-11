@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2024 at 01:35 PM
+-- Generation Time: May 11, 2024 at 03:36 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -48,7 +48,34 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`, `company_name`, `is_adm
 (11, 'ahmed', 'aشa@gmail.com', '$2a$12$bD4Dn9ym8vyB8zkQwipo2uCOLznS.gD8GUNceTiFeTk9adfr1WWj2', 'companيy3', 1, NULL),
 (12, 'ahmed', 'ahmed@example.com', '$2a$12$HDdNpL6JqVqXkjqLRqBT0OVBKETTlFdrQvULKuCpiwumYFPANYGGi', 'company6', 1, 'cus_Q1Wf33earZCx1i'),
 (13, 'khaled', 'khaled@example.com', '$2a$12$0Z37.mHCTnY6IDKQws2FS.M9wzb/S1zL8bnId/vPtDKTwLmAxqj9G', 'company7', 1, NULL),
-(14, 'maya', 'maya@email.com', '$2a$12$YoKpMrA5AkLfcwL1NHRpjOIzPEdYjt2/Wt/vEZYDlKb0nF3PtnFNO', 'company8', 1, 'cus_Q1hBS7onPzyQpb');
+(14, 'maya', 'maya@email.com', '$2a$12$YoKpMrA5AkLfcwL1NHRpjOIzPEdYjt2/Wt/vEZYDlKb0nF3PtnFNO', 'company8', 1, 'cus_Q1hBS7onPzyQpb'),
+(15, 'zyad', 'zyad@gmail.com', '$2a$12$xxY9EnRPrXJRdcVBG/kkwOymajCxDPzTuRRplNjm3oT2/ZcGbuFf.', 'REease', 1, 'cus_Q2b4MZj2H9TYRU'),
+(16, 'ali mohamed', 'ali@gmail.com', '$2a$12$nBLapbd25FnC9dooF6FlWerpqPdcNxc2eEGeUjmUt/YH7DWfoKhKO', 'pheniox', 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(200) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `company_name` varchar(200) NOT NULL,
+  `position` varchar(200) NOT NULL,
+  `salary` int(200) NOT NULL,
+  `is_admin` int(200) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `company_name`, `position`, `salary`, `is_admin`) VALUES
+(1, 'ahmed', 'ahmed@gmail.com', 'REease', 'CEO', 30000, 0),
+(2, 'ahmed', 'a@gmail.com', 'test company', 'frontend developer', 10000, 0),
+(3, 'mohamed', 'mohamed@gmail.com', 'REease', 'backend developer', 20000, 0);
 
 --
 -- Indexes for dumped tables
@@ -61,6 +88,12 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -68,7 +101,13 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

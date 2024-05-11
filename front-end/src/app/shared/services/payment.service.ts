@@ -1,4 +1,4 @@
-import { jwtDecode } from 'jwt-decode';
+// import { jwtDecode } from 'jwt-decode';
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -38,7 +38,7 @@ export class PaymentService {
 //  }
 
   checkoutannually():Observable<any>{
-    return this._HttpClient.post(`http://localhost:3000/payment/annually`, this.token)     
+    return this._HttpClient.post(`http://localhost:3000/payment/annually`, this.token)
   }
 
   checkoutmonthly():Observable<any>{

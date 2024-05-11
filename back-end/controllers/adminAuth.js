@@ -58,6 +58,8 @@ const login = async (req, res, next) => {
         {
         email: storedAdmin.email,
         adminId: storedAdmin.id,
+        adminName: storedAdmin.name,
+        adminCompanyName: storedAdmin.company_name
         },
         "secretfortoken",
         { expiresIn: "24h" }

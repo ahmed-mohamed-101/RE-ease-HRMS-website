@@ -4,11 +4,13 @@ const express = require("express");
 
 const bodyParser = require("body-parser");
 
+const errorController = require("./controllers/error");
+
 const adminAuth = require("./routes/adminAuth");
 
 const payment = require("./routes/payment");
 
-const errorController = require("./controllers/error");
+const adminManageUsers = require('./routes/adminManageUsers');
 
 const app = express();
 
@@ -39,6 +41,8 @@ app.use(bodyParser.json());
 app.use("/adminAuth", adminAuth);
 
 app.use("/payment", payment);
+
+app.use('/adminManageUsers', adminManageUsers);
 
 app.use(errorController.get404);
 
