@@ -47,7 +47,7 @@ const annually = async (req, res) => {
       after_completion : {
         type: 'redirect',
         redirect: {
-          url : 'http://localhost:4200/home2',
+          url : 'http://localhost:4200/home',
         }
       },
     });
