@@ -1,4 +1,4 @@
-const user = require("../models/user");
+const RE = require("../models/RE");
 const jwt = require("jsonwebtoken");
 
 exports.showAll = async (req, res) => {
@@ -8,7 +8,7 @@ exports.showAll = async (req, res) => {
     const verify = jwt.verify(token,secret)
     const {adminCompanyName} = verify;
 
-    const result = await user.showAll(adminCompanyName)
+    const result = await RE.showAll(adminCompanyName)
     const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
     res.status(200).json(result1);
   } catch (err) {
@@ -27,7 +27,7 @@ exports.search = async (req, res) => {
     const {adminCompanyName} = verify;
 
     let searchTerm = req.body.search;
-    const result = await user.find(searchTerm, adminCompanyName)
+    const result = await RE.find(searchTerm, adminCompanyName)
     const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
     res.status(200).json(result1);
   } catch (err) {
@@ -38,30 +38,34 @@ exports.search = async (req, res) => {
   }
 }
 
-exports.addUser = async (req, res) => {
+exports.addRE = async (req, res) => {
   const secret = "secretfortoken" 
   const token = req.body.token;
   const verify = jwt.verify(token,secret)
   const {adminCompanyName} = verify;
 
-  const name = req.body.name;
-  const email = req.body.email;
+  const owner = req.body.owner;
+  const type = req.body.type;
+  const address = req.body.address;
+  const size = req.body.size;
+  const status = req.body.status;
+  const price = req.body.price;
+  const assigned_to = req.body.assigned_to;
   const company_name = adminCompanyName;
-  const position = req.body.position;
-  const salary = req.body.salary;
-  const is_admin = 0;
 
   try {
-    const userDetails = {
-            name: name,
-            email: email,
+    const REDetails = {
+            owner: owner,
+            type: type,
+            address: address,
+            size: size,
+            status: status,
+            price: price,
+            assigned_to: assigned_to,
             company_name: company_name,
-            position: position,
-            salary: salary,
-            is_admin: is_admin,
         };
-    const result = await user.save(userDetails);
-    res.status(200).json({ message: "user registered!" });
+    const result = await RE.save(REDetails);
+    res.status(200).json({ message: "RE added" });
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
@@ -70,10 +74,10 @@ exports.addUser = async (req, res) => {
   }
 }
 
-exports.getUser = async (req, res) => {
+exports.getRE = async (req, res) => {
   try {
-    const userId = req.params.id
-    const result = await user.getUser(userId);
+    const REId = req.params.id
+    const result = await RE.getRE(REId);
     const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
     console.log(result1)
     res.status(200).json(result1);
@@ -85,21 +89,27 @@ exports.getUser = async (req, res) => {
   }
 }
 
-exports.editUser = async (req, res) => {
-  const userId = req.params.id
-  const name = req.body.name;
-  const email = req.body.email;
-  const position = req.body.position;
-  const salary = req.body.salary;
+exports.editRE = async (req, res) => {
+  const REId = req.params.id
+  const owner = req.body.owner;
+  const type = req.body.type;
+  const address = req.body.address;
+  const size = req.body.size;
+  const status = req.body.status;
+  const price = req.body.price;
+  const assigned_to = req.body.assigned_to;
   try {
-    const userDetails = {
-      name: name,
-      email: email,
-      position: position,
-      salary: salary,
-    };
-    const result = await user.editUser(userDetails, userId);
-    res.status(200).json({ message: "user edited!" });
+    const REDetails = {
+      owner: owner,
+      type: type,
+      address: address,
+      size: size,
+      status: status,
+      price: price,
+      assigned_to: assigned_to,
+  };
+    const result = await RE.editRE(REDetails, REId);
+    res.status(200).json({ message: "RE edited!" });
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
@@ -108,11 +118,11 @@ exports.editUser = async (req, res) => {
   }
 }
 
-exports.deleteUser = async (req, res) => {
+exports.deleteRE = async (req, res) => {
   try {
-    const userId = req.params.id
-    const result = await user.deleteUser(userId);
-    res.status(200).json({ message: `user-id: (${userId}) is successfully deleted :)...` });
+    const REId = req.params.id
+    const result = await RE.deleteRE(REId);
+    res.status(200).json({ message: `RE-id: (${REId}) is successfully deleted :)...` });
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

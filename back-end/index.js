@@ -12,6 +12,8 @@ const payment = require("./routes/payment");
 
 const adminManageUsers = require('./routes/adminManageUsers');
 
+const adminManageRE = require('./routes/adminManageRE')
+
 const app = express();
 
 const ports = process.env.PORT || 3000;
@@ -43,6 +45,8 @@ app.use("/adminAuth", adminAuth);
 app.use("/payment", payment);
 
 app.use('/adminManageUsers', adminManageUsers);
+
+app.use('/adminManageRE', adminManageRE);
 
 app.use(errorController.get404);
 
