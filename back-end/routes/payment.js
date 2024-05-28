@@ -2,13 +2,13 @@ const express = require('express');
 
 const router = express.Router();
 
-const {monthly,annually,confirmPayment} = require('../controllers/payment');
+const payment = require('../controllers/payment');
 
-router.post("/monthly", monthly);
+router.post("/monthly", payment.monthly);
 
-router.post("/annually", annually);
+router.post("/annually", payment.annually);
 
-router.post("/confirmPayment", confirmPayment)
+router.post("/confirmPayment", payment.confirmPayment)
 
 
 module.exports = router;

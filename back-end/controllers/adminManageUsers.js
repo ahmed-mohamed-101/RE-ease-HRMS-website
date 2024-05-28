@@ -15,7 +15,6 @@ exports.showAll = async (req, res) => {
     if (!err.statusCode) {
           err.statusCode = 500;
       }
-      next(err);
   }
 }
 
@@ -34,7 +33,6 @@ exports.search = async (req, res) => {
     if (!err.statusCode) {
           err.statusCode = 500;
       }
-      next(err);
   }
 }
 
@@ -46,6 +44,7 @@ exports.addUser = async (req, res) => {
 
   const name = req.body.name;
   const email = req.body.email;
+  const password = req.body.password;
   const company_name = adminCompanyName;
   const position = req.body.position;
   const salary = req.body.salary;
@@ -55,6 +54,7 @@ exports.addUser = async (req, res) => {
     const userDetails = {
             name: name,
             email: email,
+            password: password,
             company_name: company_name,
             position: position,
             salary: salary,
@@ -66,7 +66,6 @@ exports.addUser = async (req, res) => {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    next(err);
   }
 }
 
@@ -81,7 +80,6 @@ exports.getUser = async (req, res) => {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    next(err);
   }
 }
 
@@ -104,7 +102,6 @@ exports.editUser = async (req, res) => {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    next(err);
   }
 }
 
@@ -117,6 +114,5 @@ exports.deleteUser = async (req, res) => {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    next(err);
   }
 }

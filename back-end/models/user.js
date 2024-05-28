@@ -1,6 +1,11 @@
 const db = require('../util/database');
 
 module.exports = class user {
+  static findLogin(email) {
+    return db.execute('SELECT * FROM users WHERE email = ?',
+    [email]);
+  }
+
   static showAll(adminCompanyName) {
     return db.execute('SELECT * FROM users WHERE company_name = ?',
     [adminCompanyName]);
@@ -11,8 +16,8 @@ module.exports = class user {
   }
   
   static save(user) {
-    return db.execute('INSERT INTO users (name, email, company_name, position, salary, is_admin) VALUES (?, ?, ?, ?, ?, ?)',
-      [user.name, user.email, user.company_name, user.position, user.salary, user.is_admin]);
+    return db.execute('INSERT INTO users (name, email, password, company_name, position, salary, is_admin) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [user.name, user.email, user.password, user.company_name, user.position, user.salary, user.is_admin]);
     }
 
   static getUser(userId) {

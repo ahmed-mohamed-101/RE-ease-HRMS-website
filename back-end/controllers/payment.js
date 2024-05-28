@@ -10,7 +10,7 @@ const stripe_price_id_2 = "price_1PBO4mJo7stJPpDUs1gqYLdL"
 
 const stripe = require("stripe")(stripe_private_key);
 
-const monthly = async (req, res) => {
+exports.monthly = async (req, res) => {
   try {
     const paymentLink = await stripe.paymentLinks.create({
       line_items: [
@@ -34,7 +34,7 @@ const monthly = async (req, res) => {
   }
 };
 
-const annually = async (req, res) => {
+exports.annually = async (req, res) => {
   try {
     
     const paymentLink = await stripe.paymentLinks.create({
@@ -59,7 +59,7 @@ const annually = async (req, res) => {
   }
 };
 
-const confirmPayment = async (req, res) => {
+exports.confirmPayment = async (req, res) => {
   try {
     const secret = "secretfortoken" 
     const token = req.body.token;
@@ -74,9 +74,3 @@ const confirmPayment = async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 }
-
-module.exports = {
-  monthly,
-  annually,
-  confirmPayment
-};

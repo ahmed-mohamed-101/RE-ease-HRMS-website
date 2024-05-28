@@ -15,7 +15,6 @@ exports.showAll = async (req, res) => {
     if (!err.statusCode) {
           err.statusCode = 500;
       }
-      next(err);
   }
 }
 
@@ -34,7 +33,6 @@ exports.search = async (req, res) => {
     if (!err.statusCode) {
           err.statusCode = 500;
       }
-      next(err);
   }
 }
 
@@ -70,7 +68,6 @@ exports.addRE = async (req, res) => {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    next(err);
   }
 }
 
@@ -85,7 +82,6 @@ exports.getRE = async (req, res) => {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    next(err);
   }
 }
 
@@ -114,7 +110,6 @@ exports.editRE = async (req, res) => {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    next(err);
   }
 }
 
@@ -127,6 +122,5 @@ exports.deleteRE = async (req, res) => {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    next(err);
   }
 }

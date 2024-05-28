@@ -28,10 +28,14 @@
     background-color: var(--main-color);
 }
 
+nav{
+background-color: rgba(31,44,50,0.9) !important;
+
+}
 
 nav .active
 {
-  color: red !important;
+  color: var(--main-color) !important;
 }
 
 #navbar-example {
@@ -83,23 +87,27 @@ button {
   }
 
 .Frame-7 {
-    width: 1119px;
-    height: 153px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 40px 32px;
-    border-radius: 20px;
-    background-color: rgba(33, 37, 43, 0.5);
+  width: 1119px;
+  height: 153px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 40px 32px;
+  border-radius: 20px;
+  background-color: rgba(33, 37, 43, 0.5);
+  font-size: 1.3rem;
   }
 
 
 .photo{
     background-image:linear-gradient(rgba(0, 0, 0, 0.508) 0% 100%),url('../../../assets/images/Frame 12169.png');
-    background-size: 100%;
-  padding: 80px;
+    /* background-size: 100%; */
+    background-repeat:no-repeat;
+    background-size: cover ;
+  padding: 20px;
   color: white;
 
 
@@ -110,13 +118,13 @@ header#home
 {
     background-image:linear-gradient(rgba(0, 0, 0, 0.508) 0% 100%),url('../../../assets/images/home.jpg');
     height: 100vh;
-   background-size: 120%;
+    background-size: 120%;
     color: white;
     display: grid;
     place-content: center;
     justify-items: center;
-    width: 110%;
-    margin-left: -5%;
+    width: 100%;
+    /* margin-left: -5%; */
 }
 
 header h5
@@ -161,7 +169,7 @@ header p
 
 footer
 {
-    background-color: #1C1C1C;
+  background-color: rgb(31,44,50);
     display: grid;
     place-content: center;
 }
