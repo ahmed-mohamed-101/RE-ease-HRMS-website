@@ -5,22 +5,19 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const ports = process.env.PORT || 3000;
 
-//routes
+//routes and controllers
 const auth = require("./routes/auth");
 const payment = require("./routes/payment");
 const adminManageUsers = require('./routes/adminManageUsers');
 const adminManageRE = require('./routes/adminManageRE')
 const userRecordAttendance = require('./routes/userRecordAttendance')
-
-//controller
 const errorController = require("./controllers/error");
 
-//app
 const app = express();
 
 app.use(cors());
-
 app.use(bodyParser.json());
+
 
 app.use("/auth", auth);
 
@@ -32,8 +29,10 @@ app.use('/adminManageRE', adminManageRE);
 
 app.use('/userRecordAttendance', userRecordAttendance);
 
+
 app.use(errorController.get404);
 
 app.use(errorController.get500);
+
 
 app.listen(ports, () => console.log(`Listening on port ${ports}`));

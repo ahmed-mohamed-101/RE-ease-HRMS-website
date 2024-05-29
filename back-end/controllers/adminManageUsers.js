@@ -10,11 +10,10 @@ exports.showAll = async (req, res) => {
 
     const result = await user.showAll(adminCompanyName)
     const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
-    res.status(200).json(result1);
+    return res.status(200).json(result1);
   } catch (err) {
-    if (!err.statusCode) {
-          err.statusCode = 500;
-      }
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 }
 
@@ -28,11 +27,10 @@ exports.search = async (req, res) => {
     let searchTerm = req.body.search;
     const result = await user.find(searchTerm, adminCompanyName)
     const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
-    res.status(200).json(result1);
+    return res.status(200).json(result1);
   } catch (err) {
-    if (!err.statusCode) {
-          err.statusCode = 500;
-      }
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 }
 
@@ -61,11 +59,10 @@ exports.addUser = async (req, res) => {
             is_admin: is_admin,
         };
     const result = await user.save(userDetails);
-    res.status(200).json({ message: "user registered!" });
+    return res.status(200).json({ message: "user registered!" });
   } catch (err) {
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 }
 
@@ -74,12 +71,10 @@ exports.getUser = async (req, res) => {
     const userId = req.params.id
     const result = await user.getUser(userId);
     const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
-    console.log(result1)
-    res.status(200).json(result1);
+    return res.status(200).json(result1);
   } catch (err) {
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 }
 
@@ -97,11 +92,10 @@ exports.editUser = async (req, res) => {
       salary: salary,
     };
     const result = await user.editUser(userDetails, userId);
-    res.status(200).json({ message: "user edited!" });
+    return res.status(200).json({ message: "user edited!" });
   } catch (err) {
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 }
 
@@ -109,10 +103,9 @@ exports.deleteUser = async (req, res) => {
   try {
     const userId = req.params.id
     const result = await user.deleteUser(userId);
-    res.status(200).json({ message: `user-id: (${userId}) is successfully deleted :)...` });
+    return res.status(200).json({ message: `user-id: (${userId}) is successfully deleted :)...` });
   } catch (err) {
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 }

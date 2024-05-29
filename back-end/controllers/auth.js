@@ -21,12 +21,11 @@ exports.adminSignup = async (req, res) => {
             company_name: company_name,
             is_admin: is_admin,
         };
-    const result = await admin.save(adminDetails);
-    res.status(201).json({ message: "admin registered!" });
+        const result = await admin.save(adminDetails);
+        return res.status(200).json({ message: "admin registered!" });
     } catch (err) {
-        if (!err.statusCode) {
-            err.statusCode = 500;
-        }
+        console.error(err); // Log the error for debugging purposes
+        return res.status(500).json({ msg: 'Internal server error', error: err.message });
     }
 };
 
@@ -36,16 +35,12 @@ exports.adminLogin = async (req, res) => {
     const password = req.body.password;    
     const Admin = await admin.find(email);
     if (Admin[0].length !== 1) {
-        const error = new Error("An admin with this email could not be found.");
-        error.statusCode = 401;
-        throw error;
+        return res.status(500).json({ message: "An admin with this email could not be found." });
     }
     const storedAdmin = Admin[0][0];
     const isEqual = await bcrypt.compare(password, storedAdmin.password);
     if (!isEqual) {
-        const error = new Error("Wrong password!");
-        error.statusCode = 401;
-        throw error;
+        return res.status(500).json({ message: "Wrong password!" });
     }
     const token = jwt.sign(
         {
@@ -59,11 +54,10 @@ exports.adminLogin = async (req, res) => {
         "secretfortoken",
         { expiresIn: "30d" }
     );
-    res.status(200).json({ token: token, adminId: storedAdmin.id });
+    return res.status(200).json({ token: token, adminId: storedAdmin.id });
     } catch (err) {
-    if (!err.statusCode) {
-        err.statusCode = 500;
-    }
+        console.error(err); // Log the error for debugging purposes
+        return res.status(500).json({ msg: 'Internal server error', error: err.message });
     }
     };
 
@@ -75,9 +69,7 @@ exports.userLogin = async (req, res) => {
         
     const storedUser = User[0][0];
     if (!(password === storedUser.password)) {
-        const error = new Error("Wrong password!");
-        error.statusCode = 401;
-        throw error;
+        return res.status(500).json({ message: "Wrong password!" });
     }
     const token = jwt.sign(
         {
@@ -91,10 +83,9 @@ exports.userLogin = async (req, res) => {
         "secretfortoken",
         { expiresIn: "30d" }
     );
-    res.status(200).json({ token: token, userId: storedUser.id });
+    return res.status(200).json({ token: token, userId: storedUser.id });
     } catch (err) {
-    if (!err.statusCode) {
-        err.statusCode = 500;
-    }
+        console.error(err); // Log the error for debugging purposes
+        return res.status(500).json({ msg: 'Internal server error', error: err.message });
     }
     };

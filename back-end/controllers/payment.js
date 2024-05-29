@@ -26,17 +26,16 @@ exports.monthly = async (req, res) => {
         }
       },
     });
-
     const paymentLinkUrl = paymentLink.url;
-    res.json({ url: paymentLinkUrl });
-  } catch (e) {
-    res.status(500).json({ error: e.message });
+    return res.status(200).json({ url: paymentLinkUrl });
+  } catch (err) {
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 };
 
 exports.annually = async (req, res) => {
   try {
-    
     const paymentLink = await stripe.paymentLinks.create({
       line_items: [
         {
@@ -52,10 +51,10 @@ exports.annually = async (req, res) => {
       },
     });
     const paymentLinkUrl = paymentLink.url;
-    res.json({ url: paymentLinkUrl });
-    
-  } catch (e) {
-    res.status(500).json({ error: e.message });
+    return res.status(200).json({ url: paymentLinkUrl });
+  } catch (err) {
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 };
 
@@ -69,8 +68,9 @@ exports.confirmPayment = async (req, res) => {
     const paymentId = customer.data[0].id;
     await admin.updatePaymentId(paymentId, email);
 
-    res.json( "paymentId added to the user" );
-  } catch (e) {
-    res.status(500).json({ error: e.message });
+    return res.status(200).json( "paymentId added to the user" );
+  } catch (err) {
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 }
