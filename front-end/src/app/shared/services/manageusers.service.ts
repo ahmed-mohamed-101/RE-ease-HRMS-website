@@ -37,13 +37,14 @@ return this._HttpClient.get(`http://localhost:3000/adminManageUsers/getUser/${us
 }
 
 // edit
-edit(userId:any):Observable<any>{
-return this._HttpClient.get(`http://localhost:3000/adminManageUsers/editUser/${userId}`)
+edit(userId:any,userDetails:object):Observable<any>{
+return this._HttpClient.get(`http://localhost:3000/adminManageUsers/editUser/${userId}`,userDetails)
 }
 
 // delete
 delete(userId:any):Observable<any>{
   return this._HttpClient.get(`http://localhost:3000/adminManageUsers/deleteUser/${userId}`)
 }
+
 }
 

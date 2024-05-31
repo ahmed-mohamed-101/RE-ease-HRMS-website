@@ -78,5 +78,24 @@ delete(){
 }
 
 
+// getId():any{
+//   this._ActivatedRoute.paramMap.subscribe({
+//     next:(params)=>{
+//       let userId:any =params.get('id');
+//       this._ManageusersService.getId(userId).subscribe({
+//         next:(response)=>{
+//          this.userData=response
+
+
+//         }
+//       })
+//     }
+//   })
+
+//   }
+
+
+
+
 }
 

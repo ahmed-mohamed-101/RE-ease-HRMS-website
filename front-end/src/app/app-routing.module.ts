@@ -8,6 +8,7 @@ import { SystemlayoutComponent } from './components/systemlayout/systemlayout.co
 import { AdminmanageusersComponent } from './components/adminmanageusers/adminmanageusers.component';
 import { AdminmanagreComponent } from './components/adminmanagre/adminmanagre.component';
 import { AdduserComponent } from './components/adduser/adduser.component';
+import { EditEmployeeComponent } from './components/adminmanageusers/edit-employee/edit-employee.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   },
 
   {path:'adduser',component:AdduserComponent },
+  {path:'edituser',component:EditEmployeeComponent}
 ];
 
 @NgModule({

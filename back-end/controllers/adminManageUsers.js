@@ -72,7 +72,7 @@ exports.getUser = async (req, res) => {
     const userId = req.params.id
     const result = await user.getUser(userId);
     const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
-    return res.status(200).json(result1);
+    return res.status(200).json(...result1);
   } catch (err) {
     console.error(err); // Log the error for debugging purposes
     return res.status(500).json({ msg: 'Internal server error', error: err.message });
