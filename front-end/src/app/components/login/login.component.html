@@ -1,9 +1,9 @@
-<section class="bg-main-light p-4 rounded my-3 w-75 mx-auto">
+<!-- <section class="bg-main-light p-4 rounded my-3 w-75 mx-auto">
     <h1 class="text-main text-center">login</h1>
 
 
     <form [formGroup]="loginform" (ngSubmit)="handleform( )">
-  
+
 
 
 
@@ -14,11 +14,11 @@
       </div>
 
 
-      
+
 <div class="alert alert-danger" *ngIf="loginform.get('email')?.errors && (loginform.get('email')?.touched||inputemail.value.length>0)">
 
   <p *ngIf="loginform.get('email')?.getError('required')">
-      email is required 
+      email is required
   </p>
 
   <p *ngIf="loginform.get('email')?.getError('email')">
@@ -36,24 +36,87 @@
       <div class="alert alert-danger" *ngIf="loginform.get('password')?.errors && (loginform.get('password')?.touched||inputpassword.value.length>0)">
 
         <p *ngIf="loginform.get('password')?.getError('required')">
-            password is required 
+            password is required
         </p>
-      
+
         <p *ngIf="loginform.get('password')?.getError('pattern')">
           password is invalid
         </p>
       </div>
 
-   
 
- 
+
+
 
       <button [disabled]="loginform.invalid" class="btn-main mx-auto d-block">continue
       <i *ngIf="isloading" class="fas fa-spinner fa-spin"></i>
       </button>
-      <p *ngIf="msgerror" class="alert alert-danger">{{msgerror}}</p>   
+      <p *ngIf="msgerror" class="alert alert-danger">{{msgerror}}</p>
 
 
     </form>
- 
+
+</section> -->
+
+
+<body class="p-1">
+  <section class=" p-4 rounded my-3 w-75 row justify-content-center mx-auto">
+
+
+
+    <form [formGroup]="loginform" (ngSubmit)="handleform( )" class=" p-5 rounded w-50 mx-auto bg-white">
+
+
+      <h2 class="text-main fw-bold text-center text-capitalize">login</h2>
+
+
+      <div class="mb-3 ">
+        <label for="email" class="text-capitalize">email:</label>
+        <input #inputemail formControlName="email" type="text" id="email" class="form-control">
+      </div>
+
+
+
+<div class="alert alert-danger" *ngIf="loginform.get('email')?.errors && (loginform.get('email')?.touched||inputemail.value.length>0)">
+
+  <p *ngIf="loginform.get('email')?.getError('required')">
+      email is required
+  </p>
+
+  <p *ngIf="loginform.get('email')?.getError('email')">
+    email is invalid
+  </p>
+</div>
+
+
+      <div class="mb-2 my-3">
+        <label for="password" class="text-capitalize">password:</label>
+        <input #inputpassword formControlName="password" type="password" id="password" class="form-control">
+      </div>
+
+
+      <div class="alert alert-danger" *ngIf="loginform.get('password')?.errors && (loginform.get('password')?.touched||inputpassword.value.length>0)">
+
+        <p *ngIf="loginform.get('password')?.getError('required')">
+            password is required
+        </p>
+
+        <p *ngIf="loginform.get('password')?.getError('pattern')">
+          password is invalid
+        </p>
+      </div>
+
+
+
+
+
+      <button [disabled]="loginform.invalid" class="btn  btn-oval mx-auto py-2 d-block mt-5 text-uppercase ">Continue
+        <i *ngIf="isloading" class="fas fa-spinner fa-spin"></i>
+        </button>
+        <p *ngIf="msgerror" class="alert alert-danger">{{msgerror}}</p>
+
+    </form>
+
 </section>
+
+</body>

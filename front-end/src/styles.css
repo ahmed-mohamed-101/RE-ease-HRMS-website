@@ -58,7 +58,7 @@ a,a:hover{
 }
 
 .btn-main{
-    background-color:#41C9E2;
+    background-color:var(--main-color);
     padding: 7px 20px;
     border: 1px solid #ccc ;
     border-radius: 5px;

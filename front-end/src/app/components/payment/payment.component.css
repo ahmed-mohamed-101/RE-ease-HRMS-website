@@ -1,0 +1,52 @@
+body{
+  background-image: url('../../../assets/images/home.jpg');
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
+
+.service ,#subscribtion .sub
+{
+    /* background-color: white; */
+    padding: 40px 30px;
+    box-shadow: 0 0 2px rgba(65, 65, 65, 0.268) ;
+}
+
+
+
+.service h6 ,#subscribtion .sub h6
+{
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.service p ,#subscribtion .sub p
+{
+    color:#748182;
+
+}
+
+.pay-btn{
+  margin:0 auto 30px auto;
+width: 70%;
+border-radius: 8px;
+background-color: #f1efff;
+color: var(--main-color);
+border:none;
+}
+
+.pay-btn:hover{
+  color: white;
+  background-color: var(--main-color);
+}
+
+.main-header
+{
+    color: white;
+    font-size: 40px;
+    font-weight: 900;
+    text-align: center;
+    padding: 50px;
+    margin-bottom: 10px;
+}

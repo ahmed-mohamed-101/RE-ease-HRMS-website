@@ -5,12 +5,15 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const ports = process.env.PORT || 3000;
 
-//routes and controllers
+//routes
 const auth = require("./routes/auth");
 const payment = require("./routes/payment");
 const adminManageUsers = require('./routes/adminManageUsers');
 const adminManageRE = require('./routes/adminManageRE')
 const userRecordAttendance = require('./routes/userRecordAttendance')
+const userApplyLeave = require('./routes/userApplyLeave')
+
+//controllers
 const errorController = require("./controllers/error");
 
 const app = express();
@@ -29,6 +32,7 @@ app.use('/adminManageRE', adminManageRE);
 
 app.use('/userRecordAttendance', userRecordAttendance);
 
+app.use('/userApplyLeave', userApplyLeave)
 
 app.use(errorController.get404);
 

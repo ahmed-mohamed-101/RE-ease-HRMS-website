@@ -1,9 +1,9 @@
-body{
-  background-image: url('../../../assets/images/home.jpg');
-  background-size: cover;
-  background-position: center center;
-  height: 100vh;
-
+.add{
+  background-color: #fbfbfb;
+  min-height: 100vh;
+}
+input{
+  border: 1px solid #858585;
 }
 .btn-oval{
   border-radius: 50px;
@@ -13,4 +13,8 @@ body{
   border: none;
   color: white;
   font-size: small;
+}
+.btn-arrow i{
+   color: #7F7184;
+
 }

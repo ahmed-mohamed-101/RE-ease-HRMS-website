@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(private _HttpClient:HttpClient ,private _Router:Router) { }
- 
+
   setregister(userdata:object):Observable<any>{
-    return  this._HttpClient.post(`http://localhost:3000/adminAuth/adminSignup`,userdata)
+    return  this._HttpClient.post(`http://localhost:3000/auth/adminSignup`,userdata)
   }
 
-   
+
   setlogin(userdata:object):Observable<any>{
-    return  this._HttpClient.post(`http://localhost:3000/adminAuth/adminLogin`,userdata)
+    return  this._HttpClient.post(`http://localhost:3000/auth/adminLogin`,userdata)
   }
 
 
@@ -27,4 +27,3 @@ export class AuthService {
   }
 
 }
- 

@@ -35,7 +35,9 @@ exports.search = async (req, res) => {
 }
 
 exports.addUser = async (req, res) => {
-  const secret = "secretfortoken" 
+
+  try {
+    const secret = "secretfortoken" 
   const token = req.body.token;
   const verify = jwt.verify(token,secret)
   const {adminCompanyName} = verify;
@@ -48,17 +50,6 @@ exports.addUser = async (req, res) => {
   const salary = req.body.salary;
   const is_admin = 0;
 
-  try {
-    const userDetails = {
-            name: name,
-            email: email,
-            password: password,
-            company_name: company_name,
-            position: position,
-            salary: salary,
-            is_admin: is_admin,
-        };
-    const result = await user.save(userDetails);
     return res.status(200).json({ message: "user registered!" });
   } catch (err) {
     console.error(err); // Log the error for debugging purposes
