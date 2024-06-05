@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2024 at 03:37 AM
+-- Generation Time: Jun 06, 2024 at 12:14 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -56,33 +56,32 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`, `company_name`, `is_adm
 (19, 'mahmoud mohamed', 'mahmoud@gmail.com', '$2a$12$RW1O2eVJmal/LefGgZ5aOOBFPkALIucKFeWBWt1xDIUy27VWYXOD.', 'company5555', 1, NULL),
 (20, 'omar ahmed', 'omar@gmail.com', '$2a$12$bCBQvyHW0qANUtuFwZQJce.jX9WVg3DDBXX4PhGO3GFimbxeRVbFS', 'company99999999', 1, NULL),
 (21, 'kaya', 'kaya@email.com', '$2a$12$2vMyGZNsW04uBnEHweOD4.62NbSmfLNFLbPX/K7ipbH2CnXxfD3K.', 'company555', 1, NULL),
-(22, 'ayman', 'ayman@gmail.com', '$2a$12$RtDh5mRAuNqCKqkQmL67tukQkTBaegKbRj2a.tr1xsvANNkLNhavy', 'company55555', 1, NULL);
+(22, 'ayman', 'ayman@gmail.com', '$2a$12$RtDh5mRAuNqCKqkQmL67tukQkTBaegKbRj2a.tr1xsvANNkLNhavy', 'company55555', 1, NULL),
+(23, 'mohamed ashraf', 'mohamedashraf@gmail.com', '$2a$12$BVI4d1V7ovUKKxFAcMw.q.yCX1iy0rrI.oc3EsfFKG4ctr.wEbbwe', 'Medicare.com', 1, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `attendance_in`
+-- Table structure for table `attendance`
 --
 
-CREATE TABLE `attendance_in` (
+CREATE TABLE `attendance` (
   `id` int(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `time` text NOT NULL,
-  `status` varchar(200) NOT NULL
+  `date` text NOT NULL,
+  `clock_in` text NOT NULL,
+  `in_status` varchar(255) NOT NULL,
+  `clock_out` text DEFAULT NULL,
+  `out_status` varchar(255) DEFAULT NULL,
+  `company_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `attendance_out`
+-- Dumping data for table `attendance`
 --
 
-CREATE TABLE `attendance_out` (
-  `id` int(200) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `time` varchar(200) NOT NULL,
-  `status` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `attendance` (`id`, `email`, `date`, `clock_in`, `in_status`, `clock_out`, `out_status`, `company_name`) VALUES
+(1, 'mahdy@gmail.com', '4-6-2024', '9:0', 'on time', '17:0', 'on time', 'REease');
 
 -- --------------------------------------------------------
 
@@ -105,7 +104,9 @@ CREATE TABLE `leaves` (
 --
 
 INSERT INTO `leaves` (`id`, `name`, `leave_type`, `start_date`, `end_date`, `description`, `status`) VALUES
-(1, 'mahdy', 'medical leave', '1-6-2024', '3-6-2024', 'iam very sick and i cant come to work', 'pending');
+(1, 'mahdy', 'medical leave', '1-6-2024', '3-6-2024', 'iam very sick and i cant come to work', 'pending'),
+(2, 'mahdy', 'medical leave', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'pending'),
+(3, 'mahdy', 'medical leave', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'pending');
 
 -- --------------------------------------------------------
 
@@ -155,11 +156,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `company_name`, `position`, `salary`, `is_admin`) VALUES
-(3, 'mohamed', 'mohamed@gmail.com', 'Aa1234567', 'REease', 'backend developer', 15000, 0),
-(7, 'mahdy', 'mahdy@gmail.com', 'Aa1234567', 'REease', 'frontend developer', 15000, 0),
-(9, 'zien', 'zien@gmail.com', 'Aa1234567', 'REease', 'frontend developer', 15000, 0),
-(10, 'ahmed', 'ahmed11@gmail.com', 'Aa1234567', 'REease', 'frontend developer', 15000, 0),
-(11, 'maya', 'maya11@gmailcom', 'Aa1234567', 'REease', 'frontend developer', 20000, 0);
+(14, 'khaled', 'k@gmail.com', 'Aa12345600a', 'Medicare.com', 'front-end', 15000, 0),
+(18, 'maya', 'maya@gmail.com', 'Aa1234567', 'REease', 'backend developer ', 20000, 0),
+(19, 'khaled', 'khaled@gmail.com', 'Aa1234567', 'REease', 'baackend', 20000, 0),
+(26, 'Jasper Oliver', 'lixotuvy@mailinator.com', 'Pa$$w0rd!', 'REease', 'Quidem pariatur Qui', 1, 0),
+(27, 'Craig Higgins', 'byparehek@mailinator.com', 'Pa$$w0rd!', 'REease', 'Molestiae non quis i', 1, 0),
+(28, 'Abra Gray', 'xokigefod@mailinator.com', 'Pa$$w0rd!', 'REease', 'Sunt temporibus dolo', 1, 0),
+(29, 'Lucy Terrell', 'delyx@mailinator.com', 'Pa$$w0rd!', 'REease', 'Omnis quas ut conseq', 1, 0),
+(32, 'Urielle Hatfield', 'vogel@mailinator.com', 'Pa$$w0rd!', 'REease', 'Architecto qui labor', 1, 0),
+(33, 'Amelia Banks', 'fotorypi@mailinator.com', 'Pa$$w0rd!', 'REease', 'Cupidatat accusamus ', 1, 0),
+(34, 'Alice Robertson', 'daki@mailinator.com', 'Pa$$w0rd!', 'REease', 'Quibusdam illo esse ', 1, 0),
+(35, 'Oleg Decker', 'gulib@mailinator.com', 'Pa$$w0rd!', 'REease', 'Enim repudiandae ill', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -172,15 +179,9 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `attendance_in`
+-- Indexes for table `attendance`
 --
-ALTER TABLE `attendance_in`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `attendance_out`
---
-ALTER TABLE `attendance_out`
+ALTER TABLE `attendance`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -209,25 +210,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `attendance_in`
+-- AUTO_INCREMENT for table `attendance`
 --
-ALTER TABLE `attendance_in`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `attendance_out`
---
-ALTER TABLE `attendance_out`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `attendance`
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `re`
@@ -239,7 +234,7 @@ ALTER TABLE `re`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
