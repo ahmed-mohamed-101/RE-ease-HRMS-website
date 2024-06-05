@@ -12,16 +12,16 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class LoginComponent {
   constructor(private _AuthService:AuthService,private _Router:Router, private _FormBuilder:FormBuilder){}
 
- 
+
 
   msgerror:string=''
   isloading:boolean=false
-  
+
   //  loginform:FormGroup=new FormGroup({
   //        email:new FormControl(null,[Validators.required,Validators.email]),
   //    password:new FormControl(null,[Validators.required,Validators.pattern(/^[A-Z][a-z0-9]{6,20}$/)]),
-    
- 
+
+
   //  });
 
 loginform:FormGroup=this._FormBuilder.group({
@@ -31,7 +31,7 @@ loginform:FormGroup=this._FormBuilder.group({
 
 
 
- 
+
    handleform():void{
      if(this.loginform.valid){
        this.isloading=true;
@@ -39,28 +39,28 @@ loginform:FormGroup=this._FormBuilder.group({
        this._AuthService.setlogin(this.loginform.value).subscribe(
          {
             next:(response)=>{
-           
+
               console.log(response)
-          
-              this._Router.navigate(['/home'])
+
+              this._Router.navigate(['/systemlayout/adminmanageusers'])
               this.isloading=false;
               localStorage.setItem('etoken',response.token)
-          
 
-          
- 
- 
+
+
+
+
             },
             error:(err:HttpErrorResponse)=>{
               //  console.log(err.error.message)
                this.msgerror=err.error.message
                this.isloading=false;
- 
+
             }
-   
+
          }
        )
      }
    }
- 
+
 }

@@ -7,61 +7,63 @@ import { AdminmanageusersComponent } from '../adminmanageusers.component';
 @Component({
   selector: 'app-edit-employee',
   templateUrl: './edit-employee.component.html',
-  styleUrls: ['./edit-employee.component.css']
+  styleUrls: ['./edit-employee.component.css'],
 })
-export class EditEmployeeComponent implements OnInit{
+export class EditEmployeeComponent implements OnInit {
+  token: string | null;
+  userForm!: FormGroup;
+  userId: any;
+  employeeData: any = {};
 
-  token:string | null;
-constructor(private _ManageusersService:ManageusersService, private _ActivatedRoute:ActivatedRoute, private _AdminmanageusersComponent:AdminmanageusersComponent){
-  this.token =localStorage.getItem('etoken') ;
+  constructor(
+    private _ManageusersService: ManageusersService,
+    private _ActivatedRoute: ActivatedRoute,
+    private _Router: Router
+  ) {
+    this.token = localStorage.getItem('etoken');
+    this.userId = this._ActivatedRoute.snapshot.paramMap.get('id');
+  }
+
+  ngOnInit(): void {
+    if (this.userId) {
+      this.fetchUserData(this.userId);
+    }
+    this.initializeEditForm();
+  }
+
+  initializeEditForm() {
+    this.userForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      position: new FormControl('', [Validators.required]),
+      salary: new FormControl('', [Validators.required]),
+    });
+  }
+  setFormData(data: any) {
+    this.userForm.patchValue({
+      name: data.name,
+      email: data.email,
+      position: data.position,
+      salary: data.salary,
+    });
+  }
+  fetchUserData(userId: any) {
+    this._ManageusersService.getId(userId).subscribe({
+      next: (response) => {
+        this.employeeData = response;
+        this.setFormData(response);
+      },
+    });
+  }
+
+  // edit
+
+  editUser(userId: any): void {
+    this._ManageusersService.edit(userId, this.userForm.value).subscribe({
+      next: (response) => {
+        console.log(response);
+        this._Router.navigate(['/systemlayout/adminmanageusers']);
+      },
+    });
+  }
 }
-
-// userData:any={name:'',email:'',position:'',salary:''}
-
-userForm!: FormGroup;
-
- ngOnInit():void{
-  this.userForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    position: new FormControl('', [Validators.required]),
-    salary: new FormControl('', [Validators.required]),
-   });
- }
-
-// getId
-
-
-// getId():any{
-//   this._ActivatedRoute.paramMap.subscribe({
-//     next:(params)=>{
-
-// let userId:any=params.get('id')
-// this._ManageusersService.getId(userId).subscribe({
-//   next:(response)=>{
-//     console.log(response);
-//       this._ManageusersService.edit(userId,this.userDetails).subscribe({
-//         next:(response)=>{
-//       console.log(response.message);
-//         }
-//       })
-//   }
-// })
-//     }
-//   })
-// }
-
-
-userDetails:any={name:'',email:'',position:'',salary:''}
-userData:any={};
-
-// edit
-
-
-
-
-
-}
-
-
-

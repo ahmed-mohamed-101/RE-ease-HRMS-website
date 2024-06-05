@@ -66,3 +66,6 @@ border: none;
 background-color: var(--main-color);
 color: #3E4954;
 }
+h1{
+  color:var(--main-color) ;
+}

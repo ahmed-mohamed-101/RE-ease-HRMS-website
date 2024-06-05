@@ -7,39 +7,65 @@ exports.clockIn = async (req, res) => {
     const secret = "secretfortoken";
     const token = req.body.token;
     const verify = jwt.verify(token, secret);
-    const { email } = verify;
+    const { email, userCompanyName } = verify;
 
     const now = new Date();
     const day = now.getDate();
     const month = now.getMonth() + 1; // getMonth() returns 0-11
     const year = now.getFullYear();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const time = `${day}-${month}-${year} ${hours}:${minutes}`;
+    // const hours = now.getHours();
+    const hours = 9;
+    // const minutes = now.getMinutes();
+    const minutes = 0;
+    const date = `${day}-${month}-${year}`;
+    const time = `${hours}:${minutes}`;
     const workHours_from = 9;
-
-    if(hours < 8 || hours > 9){
-      return res.status(500).json({ msg: 'clock in time is from 8:00 am to 9:00 am .. u need to clock in again at that time range or you will be absent'});
-    }
-
     let clockInStatus;
-    if ((hours === 8) || (hours === workHours_from && minutes === 0)) {
+
+    const searchDetails = {
+      email: email,
+      date: date,
+      company_name : userCompanyName
+    }
+    const searchResults = await attendance_in.search(searchDetails);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if (searchResults == 1) {
+      return res.status(200).json({ msg: 'you already clocked_in'});
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }else if(hours < 8 ){
+      return res.status(200).json({ msg: 'clock in starts at 8:00 .. so try again please at that time or you will be absent'});
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }else if ((hours == 8) || (hours == 9 && minutes <= 15)) {
       clockInStatus = "on time";
+      const attendanceDetails = {
+        email: email,
+        date: date,
+        clock_in: time,
+        in_status: clockInStatus,
+        company_name : userCompanyName
+      };
+      await attendance_in.save(attendanceDetails); 
+      return res.status(200).json({ msg: 'Clock-in successfully', status: clockInStatus});
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    } else if ((hours == 9 && minutes > 15) || (hours == 10 && minutes == 0)) {
+      clockInStatus = "late";
+      const attendanceDetails = {
+        email: email,
+        date: date,
+        clock_in: time,
+        in_status: clockInStatus,
+        company_name : userCompanyName
+      };
+      await attendance_out.save(attendanceDetails); 
+      return res.status(200).json({ msg: 'Clock-in successfully', status: clockInStatus});
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     } else {
       clockInStatus = "absent";
+      return res.status(200).json({ msg: 'Clock-in successfully', status: clockInStatus});
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
-
-    const attendanceDetails = {
-      email: email,
-      time: time,
-      status: clockInStatus
-    };
-
-    await attendance_in.save(attendanceDetails); // Save the attendance details
-    return res.status(200).json({ msg: 'Clock-in successfully', status: clockInStatus });
-
   } catch (err) {
-    console.error(err); // Log the error for debugging purposes
+    console.error(err);
     return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 };
@@ -49,38 +75,80 @@ exports.clockOut = async (req, res) => {
     const secret = "secretfortoken";
     const token = req.body.token;
     const verify = jwt.verify(token, secret);
-    const { email } = verify;
+    const { email,userCompanyName } = verify;
 
     const now = new Date();
     const day = now.getDate();
     const month = now.getMonth() + 1; // getMonth() returns 0-11
     const year = now.getFullYear();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const time = `${day}-${month}-${year} ${hours}:${minutes}`;
-
+    // const hours = now.getHours();
+    const hours = 17;
+    // const minutes = now.getMinutes();
+    const minutes = 0;
+    const date = `${day}-${month}-${year}`;
+    const time = `${hours}:${minutes}`;
     const workHours_to = 17 
-
-    if(hours < 17 || hours > 17){
-      return res.status(500).json({ msg: 'clock out time is from 17:00 pm to 18:00 pm .. u need to clock out again at that time range or you will be absent'});
-    }
-
     let clockOutStatus;
-    if (hours >= workHours_to) {
-      clockOutStatus = "on time";
-    } else {
-      clockOutStatus = "absent";
-    }
-
-    const attendanceDetails = {
+    const searchDetails = {
       email: email,
-      time: time,
-      status: clockOutStatus
-    };
-
-    await attendance_out.save(attendanceDetails); // Save the attendance details
-    return res.status(200).json({ msg: 'Clock-out successfully', status: clockOutStatus });
-  } catch (err) {
+      date: date,
+      company_name : userCompanyName
+    }
+    const searchResults = await attendance_out.search(searchDetails);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if (searchResults == 0) {
+      return res.status(200).json({ msg: 'you did not clock_in .. you are absent today'});
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }else if ((hours == 16 && minutes <= 54)) {
+      clockOutStatus = "early";
+      const attendanceDetails = {
+        email: email,
+        date: date,
+        clock_out: time,
+        out_status: clockOutStatus,
+        company_name : userCompanyName
+      };
+      await attendance_out.save(attendanceDetails); 
+      return res.status(200).json({ msg: 'Clock-out successfully', Status: clockOutStatus});
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }else if ((hours == 16 && minutes >= 55) || (hours == 17) || (hours == 18 && minutes == 0)){
+      clockOutStatus = "on time";
+      const attendanceDetails = {
+        email: email,
+        date: date,
+        clock_out: time,
+        out_status: clockOutStatus,
+        company_name : userCompanyName
+      };
+      await attendance_out.save(attendanceDetails); 
+      return res.status(200).json({ msg: 'Clock-out successfully', Status: clockOutStatus});
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }else if ((hours == 18 && minutes > 0) || ( hours <= 20 && hours > 18)) {
+      clockOutStatus = "extra";
+      const attendanceDetails = {
+        email: email,
+        date: date,
+        clock_out: time,
+        out_status: clockOutStatus,
+        company_name : userCompanyName
+      };
+      await attendance_out.save(attendanceDetails); 
+      return res.status(200).json({ msg: 'Clock-out successfully', Status: clockOutStatus});
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }else if (hours > 20) {
+      clockOutStatus = "extra"
+      const attendanceDetails = {
+        email: email,
+        date: date,
+        clock_out: 20,
+        out_status: clockOutStatus,
+        company_name : userCompanyName
+      };
+      await attendance_out.save(attendanceDetails); 
+      return res.status(200).json({ msg: 'clock out is closed at 20:00 .. but it is successfull clock_out', Status: clockOutStatus});
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    } 
+  }catch (err) {
     console.error(err); // Log the error for debugging purposes
     return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }

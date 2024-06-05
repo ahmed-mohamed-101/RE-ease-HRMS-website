@@ -1,5 +1,6 @@
 
                 <section class="employee py-2">
+                      <h1 class="text-center fw-bold my-3">Admin Pannel</h1>
                   <div class="input-container w-50 mx-auto ">
                       <div class="d-flex mt-4">
                               <input (input)="onSearchInput()" [(ngModel)]="userData" type="search" class="form-control  mx-auto  py-2 "  placeholder="Can I Help You? " >
@@ -15,7 +16,7 @@
                           </div>
                           <div class="col-md-2 ">
                               <button class="btn btn-main" routerLink="/adduser">
-                                  Add User+
+                                <i class="fa-solid fa-user-plus fs-7 px-2 my-1" ></i>Add User
                               </button>
                           </div>
                       </div>
@@ -43,8 +44,10 @@
                           <td>{{employee.salary}}</td>
 
                           <td class="d-flex justify-content-evenly manage-i">
-                              <div><i class="fa-regular fa-pen-to-square px-2" ></i><a >Edit</a></div>
-s                              <div><i class="fa-solid fa-trash-can px-2"></i><a  (click)="delete()">Delete</a></div>
+                            <div>
+                              <i class="fa-regular fa-pen-to-square px-2"></i><a [routerLink]="['/edituser/', employee.id]">Edit</a>
+                            </div>
+                          <div><i class="fa-solid fa-trash-can px-2"></i><a href="systemlayout/adminmanageusers" (click)="deleteEmployee(employee.id)">Delete</a></div>
                           </td>
                       </tr>
                     </tbody>

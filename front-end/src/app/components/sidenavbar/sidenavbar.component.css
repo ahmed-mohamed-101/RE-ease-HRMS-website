@@ -16,21 +16,35 @@
 
 .navbar-nav {
   flex-direction: column;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .nav-item {
   width: 100%;
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 700px) {
   .navbar {
     height: auto; /* Reset the height for smaller screens */
   }
 
   .collapse.navbar-collapse {
     order: 3; /* Move the collapse to the end */
+
   }
+
+  .aa {
+    display: none;
+  }
+}
+
+.aa {
+color: #36CCFF;
+
+
+}
+.navvv{
+  position: fixed;
 }
 
 

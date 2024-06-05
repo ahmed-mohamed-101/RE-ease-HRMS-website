@@ -25,7 +25,7 @@ const routes: Routes = [
   },
 
   {path:'adduser',component:AdduserComponent },
-  {path:'edituser',component:EditEmployeeComponent}
+  {path:'edituser/:id',component:EditEmployeeComponent}  
 ];
 
 @NgModule({

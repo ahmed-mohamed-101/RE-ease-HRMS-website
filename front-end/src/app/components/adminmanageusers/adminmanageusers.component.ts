@@ -2,7 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ManageusersService } from 'src/app/shared/services/manageusers.service';
 
 
@@ -13,7 +13,7 @@ import { ManageusersService } from 'src/app/shared/services/manageusers.service'
 })
 export class AdminmanageusersComponent implements OnInit {
 
-  constructor(private _ManageusersService:ManageusersService,private _ActivatedRoute:ActivatedRoute){}
+  constructor(private _ManageusersService:ManageusersService,private _ActivatedRoute:ActivatedRoute, private _Router:Router){}
 
 
 employeeData:any=[];
@@ -64,38 +64,41 @@ userSearch:any={};
   }
 
  userDetails:any[]=[];
-delete(){
- this._ActivatedRoute.paramMap.subscribe({
-  next:(params)=>{
-  let id:any=params.get('id')
-  this._ManageusersService.delete(id).subscribe({
-    next:(response)=>{
-    this.userDetails=response
+
+  // delete
+  deleteEmployee(userId:string):void{
+    this._ManageusersService.delete(userId).subscribe({
+      next:(response)=>{
+    
+
+     console.log(response);
+
+      }
+    })
+  }
+
+getId():void{
+  this._ActivatedRoute.paramMap.subscribe({
+    next:(params)=>{
+      let userId:any =params.get('id');
+      this._ManageusersService.getId(userId).subscribe({
+        next:(response)=>{
+         this.employeeData=response
+         console.log(params);
+
+          console.log(response);
+          console.log(userId);
+
+
+        }
+      })
     }
   })
-  }
- })
+
+
+
+
 }
-
-
-// getId():any{
-//   this._ActivatedRoute.paramMap.subscribe({
-//     next:(params)=>{
-//       let userId:any =params.get('id');
-//       this._ManageusersService.getId(userId).subscribe({
-//         next:(response)=>{
-//          this.userData=response
-
-
-//         }
-//       })
-//     }
-//   })
-
-//   }
-
-
-
 
 }
 
