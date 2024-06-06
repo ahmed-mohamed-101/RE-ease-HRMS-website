@@ -42,7 +42,7 @@ loginform:FormGroup=this._FormBuilder.group({
               this.isloading=false;
               localStorage.setItem('etoken',response.token)
               if (response.payment_id){
-                this._Router.navigate(['/systemlayout/adminmanageusers'])
+                this._Router.navigate(['/systemlayout/dashboard'])
               }
               else{
                 this._Router.navigate(['/payment'])
