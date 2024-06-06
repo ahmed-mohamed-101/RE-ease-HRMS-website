@@ -22,7 +22,7 @@ exports.monthly = async (req, res) => {
       after_completion : {
         type: 'redirect',
         redirect: {
-          url : 'http://localhost:4200/home',
+          url : 'http://localhost:4200/systemlayout/dashboard',
         }
       },
     });
@@ -46,7 +46,7 @@ exports.annually = async (req, res) => {
       after_completion : {
         type: 'redirect',
         redirect: {
-          url : 'http://localhost:4200/home',
+          url : 'http://localhost:4200/systemlayout/dashboard',
         }
       },
     });
@@ -67,7 +67,6 @@ exports.confirmPayment = async (req, res) => {
     const customer = await stripe.customers.search({query: `email:"${email}"`,});
     const paymentId = customer.data[0].id;
     await admin.updatePaymentId(paymentId, email);
-
     return res.status(200).json( "paymentId added to the user" );
   } catch (err) {
     console.error(err); // Log the error for debugging purposes

@@ -44,7 +44,4 @@ edit(userId:any,userDetails:any):Observable<any>{
 delete(userId:string):Observable<any>{
   return this._HttpClient.get(`http://localhost:3000/adminManageUsers/deleteUser/${userId}`)
 }
-
-
 }
-

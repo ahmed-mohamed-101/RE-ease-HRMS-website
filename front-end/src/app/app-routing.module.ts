@@ -9,6 +9,7 @@ import { AdminmanageusersComponent } from './components/adminmanageusers/adminma
 import { AdminmanagreComponent } from './components/adminmanagre/adminmanagre.component';
 import { AdduserComponent } from './components/adduser/adduser.component';
 import { EditEmployeeComponent } from './components/adminmanageusers/edit-employee/edit-employee.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -20,12 +21,14 @@ const routes: Routes = [
   {  path:'systemlayout', component:SystemlayoutComponent,
   children: [
    {path:'adminmanageusers',component:AdminmanageusersComponent},
-   {path:'adminmanagere',component:AdminmanagreComponent}
+   {path:'adminmanagere',component:AdminmanagreComponent},
+   {path:'dashboard',component:DashboardComponent}
+
   ]
   },
 
   {path:'adduser',component:AdduserComponent },
-  {path:'edituser/:id',component:EditEmployeeComponent}  
+  {path:'edituser/:id',component:EditEmployeeComponent}
 ];
 
 @NgModule({

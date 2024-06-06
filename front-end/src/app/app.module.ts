@@ -17,6 +17,7 @@ import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.componen
 import { SystemlayoutComponent } from './components/systemlayout/systemlayout.component';
 import { AdduserComponent } from './components/adduser/adduser.component';
 import { EditEmployeeComponent } from './components/adminmanageusers/edit-employee/edit-employee.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 
@@ -34,6 +35,7 @@ import { EditEmployeeComponent } from './components/adminmanageusers/edit-employ
     SystemlayoutComponent,
     AdduserComponent,
     EditEmployeeComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

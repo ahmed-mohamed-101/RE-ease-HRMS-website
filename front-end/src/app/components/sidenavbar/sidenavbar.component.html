@@ -17,16 +17,16 @@
     <hr class="border border-primary border-2 opacity-25 w-50 mb-2" style="border-color:#36ccff !important ;">
     <ul class="navbar-nav d-flex ">
       <li class="nav-item py-1">
-        <a class="nav-link" href="#"><i class="fa-solid fa-chart-line px-2 fs-6"></i>Dashboard<i class="fa-solid fa-chevron-right px-2 fa-sm"></i></a>
+        <a class="nav-link " [routerLink]="['/systemlayout/dashboard']" routerLinkActive="active-link"><i class="fa-solid fa-chart-line px-2 fs-6"></i>Dashboard<i class="fa-solid fa-chevron-right px-2 fa-sm"></i></a>
       </li>
       <li class="nav-item py-1">
-        <a class="nav-link" routerLink="systemlayout/adminmanageusers" routerLinkActive="active-link"><i class="fa-solid fa-user-gear px-2 fs-6"></i>Manage Useres<i class="fa-solid fa-chevron-right px-2 fa-sm"></i></a>
+        <a class="nav-link" [routerLink]="['/systemlayout/adminmanageusers']" routerLinkActive="active-link"><i class="fa-solid fa-user-gear px-2 fs-6"></i>Manage Useres<i class="fa-solid fa-chevron-right px-2 fa-sm"></i></a>
       </li>
       <li class="nav-item py-1">
-        <a class="nav-link" href="#"><i class="fa-solid fa-house px-2 fs-6"></i>Mange RealEstate<i class="fa-solid fa-chevron-right px-2 fa-sm"></i></a>
+        <a class="nav-link" [routerLink]="['/systemlayout/adminmanagere']" routerLinkActive="active-link" ><i class="fa-solid fa-house px-2 fs-6"></i>Mange RealEstate<i class="fa-solid fa-chevron-right px-2 fa-sm"></i></a>
       </li>
       <li class="nav-item py-1">
-        <a class="nav-link" href="#"><i class="fa fa-sign-out px-2 fs-6" aria-hidden="true"></i>Log Out</a>
+        <a class="nav-link" [routerLink]="['/home']" (click)="deleteItem()"><i class="fa fa-sign-out px-2 fs-6" aria-hidden="true"></i>Log Out</a>
       </li>
     </ul>
 

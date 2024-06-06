@@ -83,10 +83,8 @@ a,a:hover{
 *{
   font-family: "Poppins", sans-serif;
 }
-.active-link a{
+.active-link {
   background-color: var(--main-color) !important;
   color: var(--light-color) !important;
   border-radius: 5px;
 }
-
-

@@ -54,7 +54,7 @@ exports.adminLogin = async (req, res) => {
         "secretfortoken",
         { expiresIn: "30d" }
     );
-    return res.status(200).json({ token: token, adminId: storedAdmin.id });
+    return res.status(200).json({ token: token, payment_id: storedAdmin.payment_id });
     } catch (err) {
         console.error(err); // Log the error for debugging purposes
         return res.status(500).json({ msg: 'Internal server error', error: err.message });

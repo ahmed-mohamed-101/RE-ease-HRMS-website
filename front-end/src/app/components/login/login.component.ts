@@ -30,34 +30,29 @@ loginform:FormGroup=this._FormBuilder.group({
 })
 
 
-
-
-   handleform():void{
+  handleform():void{
      if(this.loginform.valid){
        this.isloading=true;
        console.log(this.loginform.value);
        this._AuthService.setlogin(this.loginform.value).subscribe(
          {
             next:(response)=>{
-
               console.log(response)
-
               this._Router.navigate(['/systemlayout/adminmanageusers'])
               this.isloading=false;
               localStorage.setItem('etoken',response.token)
-
-
-
-
-
+              if (response.payment_id){
+                this._Router.navigate(['/systemlayout/adminmanageusers'])
+              }
+              else{
+                this._Router.navigate(['/payment'])
+              }
             },
             error:(err:HttpErrorResponse)=>{
               //  console.log(err.error.message)
                this.msgerror=err.error.message
                this.isloading=false;
-
             }
-
          }
        )
      }

@@ -22,7 +22,14 @@ export class SidenavbarComponent implements OnInit {
     });
   }
 
+  deleteItem() {
+
+
+
+   localStorage.removeItem('etoken')
+
+
 
 }
 
-
+}
