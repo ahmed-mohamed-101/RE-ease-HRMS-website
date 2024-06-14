@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2024 at 12:14 AM
+-- Generation Time: Jun 15, 2024 at 01:28 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -42,12 +42,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `company_name`, `is_admin`, `payment_id`) VALUES
-(8, 'ahmed', 'aa@gmail.com', '$2a$12$HvhO8ij.F/ochQSvEuv5nOZmkrcsXCQ34lY1tZ3DbOLa2Xuuvp8I6', 'company1', 1, NULL),
-(9, 'khaled', 'k@gmail.com', '$2a$12$0nKgCZNQjRfLnc.d2..NxO3OR441UbtBZpRTezgc6OAaVpvdmbGGW', '2', 1, NULL),
-(10, 'ahmed', 'a@gmail.com', '$2a$12$.zlwNTFQTAXdI4MljFmNjOD/JbRragqqKlcP5RDDVLGlT2SpONaTy', 'real estate ease', 1, NULL),
-(11, 'ahmed', 'aشa@gmail.com', '$2a$12$bD4Dn9ym8vyB8zkQwipo2uCOLznS.gD8GUNceTiFeTk9adfr1WWj2', 'companيy3', 1, NULL),
 (12, 'ahmed', 'ahmed@example.com', '$2a$12$HDdNpL6JqVqXkjqLRqBT0OVBKETTlFdrQvULKuCpiwumYFPANYGGi', 'company6', 1, 'cus_Q1Wf33earZCx1i'),
-(13, 'khaled', 'khaled@example.com', '$2a$12$0Z37.mHCTnY6IDKQws2FS.M9wzb/S1zL8bnId/vPtDKTwLmAxqj9G', 'company7', 1, NULL),
 (14, 'maya', 'maya@email.com', '$2a$12$YoKpMrA5AkLfcwL1NHRpjOIzPEdYjt2/Wt/vEZYDlKb0nF3PtnFNO', 'company8', 1, 'cus_Q1hBS7onPzyQpb'),
 (15, 'zyad', 'zyad@gmail.com', '$2a$12$xxY9EnRPrXJRdcVBG/kkwOymajCxDPzTuRRplNjm3oT2/ZcGbuFf.', 'REease', 1, 'cus_Q7QejoiSQTYhkC'),
 (16, 'ali mohamed', 'ali@gmail.com', '$2a$12$nBLapbd25FnC9dooF6FlWerpqPdcNxc2eEGeUjmUt/YH7DWfoKhKO', 'pheniox', 1, NULL),
@@ -55,9 +50,13 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`, `company_name`, `is_adm
 (18, 'mohsen', 'm@gmail.com', '$2a$12$meZYQTwqi0kk7QrAmSUhyusfVCzfcBkbmdfg22D2uQQGMXO4KvzXO', 'google', 1, NULL),
 (19, 'mahmoud mohamed', 'mahmoud@gmail.com', '$2a$12$RW1O2eVJmal/LefGgZ5aOOBFPkALIucKFeWBWt1xDIUy27VWYXOD.', 'company5555', 1, NULL),
 (20, 'omar ahmed', 'omar@gmail.com', '$2a$12$bCBQvyHW0qANUtuFwZQJce.jX9WVg3DDBXX4PhGO3GFimbxeRVbFS', 'company99999999', 1, NULL),
-(21, 'kaya', 'kaya@email.com', '$2a$12$2vMyGZNsW04uBnEHweOD4.62NbSmfLNFLbPX/K7ipbH2CnXxfD3K.', 'company555', 1, NULL),
 (22, 'ayman', 'ayman@gmail.com', '$2a$12$RtDh5mRAuNqCKqkQmL67tukQkTBaegKbRj2a.tr1xsvANNkLNhavy', 'company55555', 1, NULL),
-(23, 'mohamed ashraf', 'mohamedashraf@gmail.com', '$2a$12$BVI4d1V7ovUKKxFAcMw.q.yCX1iy0rrI.oc3EsfFKG4ctr.wEbbwe', 'Medicare.com', 1, NULL);
+(23, 'mohamed ashraf', 'mohamedashraf@gmail.com', '$2a$12$BVI4d1V7ovUKKxFAcMw.q.yCX1iy0rrI.oc3EsfFKG4ctr.wEbbwe', 'Medicare.com', 1, NULL),
+(24, 'mahmoud', 'm2@gmail.com', '$2a$12$Q63uW3kI6UxOdlV4FRFM.u.VAFh7WhF2JZiH40jz9pRjhGz.y3ERe', 'it is company', 1, 'cus_QEyUTnhR7HxnYm'),
+(25, 'shahd', 'shahd@gmail.com', '$2a$12$oQ.hTu6ETo5q6FBnY3oTW.tXEZ/HPO9UEE8Qo87gJ9uB/Jpz0xKkq', 'puppyvet', 1, 'cus_QFDPMtt9G87jzS'),
+(32, 'kaya1', 'kaya1@gmail.com', '$2a$12$yE7BQeZMqAszhWqeQfXnAOphAwSZTlZecVmsCXLDWqJAv7dqWkrjO', 'company555', 1, 'cus_QFguX7Au5YELtd'),
+(33, 'shawky', 'shawky@gmail.com', '$2a$12$bEWTIme6CSbU2NdJf8GMgOXHSmoih5JQKD.OEAhFoFwq4FNBSkeO.', 'xxx', 1, 'cus_QHBgn9Y5wkV4z3'),
+(34, 'mamad', 'mamad@gmail.com', '$2a$12$gsY.2LJVxyLwbfFhlWj/buiMNztGhKGvT55tW.gNhB3XhLv2Ny/Gq', 'safasfafa', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -81,7 +80,10 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`id`, `email`, `date`, `clock_in`, `in_status`, `clock_out`, `out_status`, `company_name`) VALUES
-(1, 'mahdy@gmail.com', '4-6-2024', '9:0', 'on time', '17:0', 'on time', 'REease');
+(1, 'mahdy@gmail.com', '4-6-2024', '9:0', 'on time', '17:0', 'on time', 'REease'),
+(2, 'mahdy@gmail.com', '11-6-2024', '9:0', 'on time', '17:0', 'on time', 'REease'),
+(3, 'shady@gmail.com', '11-6-2024', '9:0', 'on time', NULL, 'on time', 'REease'),
+(6, 'khaled@gmail.com', '15-6-2024', '8:0', 'on time', '17:0', 'on time', 'REease');
 
 -- --------------------------------------------------------
 
@@ -96,17 +98,21 @@ CREATE TABLE `leaves` (
   `start_date` text DEFAULT NULL,
   `end_date` text DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL
+  `status` varchar(255) DEFAULT NULL,
+  `company_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `leaves`
 --
 
-INSERT INTO `leaves` (`id`, `name`, `leave_type`, `start_date`, `end_date`, `description`, `status`) VALUES
-(1, 'mahdy', 'medical leave', '1-6-2024', '3-6-2024', 'iam very sick and i cant come to work', 'pending'),
-(2, 'mahdy', 'medical leave', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'pending'),
-(3, 'mahdy', 'medical leave', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'pending');
+INSERT INTO `leaves` (`id`, `name`, `leave_type`, `start_date`, `end_date`, `description`, `status`, `company_name`) VALUES
+(4, 'mahdy', 'medical leave', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'rejected', 'REease'),
+(5, 'mahdy', 'medical leave', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'approved', 'REease'),
+(6, 'mahdy', 'other', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'pending', 'REease'),
+(7, 'mahdy', 'othersssssssss', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'pending', 'REease'),
+(10, 'khaled', 'medical leave', '12-6-2024', '15-6-2024', 'iam very sick and i cant come to work', 'pending', 'REease'),
+(11, 'khaled', 'family leave', '12-6-2024', '15-6-2024', 'iam very sick and i cant come to work', 'pending', 'REease');
 
 -- --------------------------------------------------------
 
@@ -123,16 +129,20 @@ CREATE TABLE `re` (
   `status` varchar(255) NOT NULL,
   `price` int(255) NOT NULL,
   `assigned_to` varchar(255) NOT NULL,
-  `company_name` varchar(255) NOT NULL
+  `company_name` varchar(255) NOT NULL,
+  `document` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `re`
 --
 
-INSERT INTO `re` (`id`, `owner`, `type`, `address`, `size`, `status`, `price`, `assigned_to`, `company_name`) VALUES
-(2, 'khaled', 'appartment', 'giza', 200, 'for sale', 150000, 'khaled', 'REease'),
-(3, 'zyad', 'appartment', 'giza', 150, 'for sale', 150000, 'mohamed', 'REease');
+INSERT INTO `re` (`id`, `owner`, `type`, `address`, `size`, `status`, `price`, `assigned_to`, `company_name`, `document`) VALUES
+(2, 'khaled', 'appartment', 'giza', 200, 'sold out', 150000, 'khaled', 'REease', NULL),
+(3, 'zyad', 'appartment', 'giza', 150, 'rented', 150000, 'mohamed', 'REease', NULL),
+(4, 'zyad', 'appartment', 'giza', 150, 'for sale', 150000, 'mohamed', 'REease', 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+(5, 'jhon', 'appartment', 'giza', 117, 'for rent', 150000, 'khaled', 'REease', 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+(6, 'lila', 'house', 'cairo', 110, 'for sale', 200000, 'khaled', 'REease', 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 
 -- --------------------------------------------------------
 
@@ -156,17 +166,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `company_name`, `position`, `salary`, `is_admin`) VALUES
-(14, 'khaled', 'k@gmail.com', 'Aa12345600a', 'Medicare.com', 'front-end', 15000, 0),
-(18, 'maya', 'maya@gmail.com', 'Aa1234567', 'REease', 'backend developer ', 20000, 0),
-(19, 'khaled', 'khaled@gmail.com', 'Aa1234567', 'REease', 'baackend', 20000, 0),
-(26, 'Jasper Oliver', 'lixotuvy@mailinator.com', 'Pa$$w0rd!', 'REease', 'Quidem pariatur Qui', 1, 0),
-(27, 'Craig Higgins', 'byparehek@mailinator.com', 'Pa$$w0rd!', 'REease', 'Molestiae non quis i', 1, 0),
-(28, 'Abra Gray', 'xokigefod@mailinator.com', 'Pa$$w0rd!', 'REease', 'Sunt temporibus dolo', 1, 0),
-(29, 'Lucy Terrell', 'delyx@mailinator.com', 'Pa$$w0rd!', 'REease', 'Omnis quas ut conseq', 1, 0),
-(32, 'Urielle Hatfield', 'vogel@mailinator.com', 'Pa$$w0rd!', 'REease', 'Architecto qui labor', 1, 0),
-(33, 'Amelia Banks', 'fotorypi@mailinator.com', 'Pa$$w0rd!', 'REease', 'Cupidatat accusamus ', 1, 0),
-(34, 'Alice Robertson', 'daki@mailinator.com', 'Pa$$w0rd!', 'REease', 'Quibusdam illo esse ', 1, 0),
-(35, 'Oleg Decker', 'gulib@mailinator.com', 'Pa$$w0rd!', 'REease', 'Enim repudiandae ill', 1, 0);
+(70, 'shady', 'shady@gmail.com', '$2a$12$pnpWoGscEjNtP4sMisiueeWxTiwfzTN7sEVOW9SrYqx.fRgNa.dLW', 'REease', 'frontend developer', 15000, 0),
+(71, 'shady1', 'shady1@gmail.com', '$2a$12$0VBRs1SmL2G2tcllljBym.FsPMvnlBWo/Ejr2xEBLHdvfivahu10S', 'REease', 'frontend developer', 15000, 0),
+(72, 'Luke Clayton', 'nytadyga@mailinator.com', '$2a$12$hplV0DnjgN3.aVcnsAoG/.YygXeRxIE8MiKaZE5xMGTSDXTkIO9.O', 'company555', 'Perspiciatis aliqui', 1, 0),
+(73, 'khaled', 'khaled@gmail.com', '$2a$12$89Y7lX6ZsxS5xaPIGg/FWOqnNZHJH6q54/8mzNVRMXxJWYa/u6aPe', 'REease', 'frontend developer', 15000, 0);
 
 --
 -- Indexes for dumped tables
@@ -210,31 +213,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `re`
 --
 ALTER TABLE `re`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
