@@ -64,8 +64,11 @@ exports.confirmPayment = async (req, res) => {
     const token = req.body.token;
     const verify = jwt.verify(token,secret)
     const {email} = verify;
+    console.log(email)
     const customer = await stripe.customers.search({query: `email:"${email}"`,});
+    console.log(customer)
     const paymentId = customer.data[0].id;
+    console.log(paymentId)
     await admin.updatePaymentId(paymentId, email);
     return res.status(200).json( "paymentId added to the user" );
   } catch (err) {

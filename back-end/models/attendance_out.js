@@ -9,7 +9,8 @@ module.exports = class attendance_out {
   static async search (searchDetails) {
     try {
       const rows = await db.execute('SELECT * FROM attendance WHERE email = ? AND date = ? AND company_name = ?',[searchDetails.email, searchDetails.date, searchDetails.company_name]);
-      if (rows && rows.length > 0) {
+      console.log(rows[0])
+      if (rows[0].length > 0) {
           return 1;
       } else {
           return 0;

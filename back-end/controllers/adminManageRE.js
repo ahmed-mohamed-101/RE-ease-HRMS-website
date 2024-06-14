@@ -48,6 +48,7 @@ exports.addRE = async (req, res) => {
   const price = req.body.price;
   const assigned_to = req.body.assigned_to;
   const company_name = adminCompanyName;
+  const document = req.body.document;
 
   try {
     const REDetails = {
@@ -59,6 +60,7 @@ exports.addRE = async (req, res) => {
             price: price,
             assigned_to: assigned_to,
             company_name: company_name,
+            document: document
         };
     const result = await RE.save(REDetails);
     return res.status(200).json({ message: "RE added" });
@@ -113,6 +115,19 @@ exports.deleteRE = async (req, res) => {
     const REId = req.params.id
     const result = await RE.deleteRE(REId);
     return res.status(200).json({ message: `RE-id: (${REId}) is successfully deleted :)...` });
+  } catch (err) {
+    console.error(err); // Log the error for debugging purposes
+    return res.status(500).json({ msg: 'Internal server error', error: err.message });
+  }
+}
+
+exports.viewDocument = async (req, res) => {
+  try {
+    const REId = req.params.id
+
+    const result = await RE.showDocument(REId)
+    const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
+    return res.status(200).json(...result1);
   } catch (err) {
     console.error(err); // Log the error for debugging purposes
     return res.status(500).json({ msg: 'Internal server error', error: err.message });

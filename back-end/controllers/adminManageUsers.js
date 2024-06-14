@@ -1,5 +1,6 @@
 const user = require("../models/user");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 exports.showAll = async (req, res) => {
   try {
@@ -48,19 +49,33 @@ exports.addUser = async (req, res) => {
   const salary = req.body.salary;
   const is_admin = 0;
 
+  const hashedPassword =  await bcrypt.hash(password, 12);
+
+  const findEmail = await user.findLogin(email)
+  const findEmail1 = findEmail[0]
+
+  const findName = await user.findN(name)
+  const findName1 = findName[0]
+
   try {
+
+    if (findEmail1.length != 0){
+      return res.status(500).json({ message: "this email already exist" });
+  }else if (findName1.length != 0) {
+      return res.status(500).json({ message: "this name already exist" });
+  }else{
     const userDetails = {
       name: name,
       email: email,
-      password: password,
+      password: hashedPassword,
       company_name: company_name,
       position: position,
       salary: salary,
       is_admin: is_admin
   };
     const result = await user.save(userDetails);
-
     return res.status(200).json({ message: "user registered!" });
+  }
   } catch (err) {
     console.error(err); // Log the error for debugging purposes
     return res.status(500).json({ msg: 'Internal server error', error: err.message });

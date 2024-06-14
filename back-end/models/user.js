@@ -1,9 +1,23 @@
 const db = require('../util/database');
 
 module.exports = class user {
-  static findLogin(email) {
-    return db.execute('SELECT * FROM users WHERE email = ?',
-    [email]);
+  // static findLogin(email) {
+  //   return db.execute('SELECT * FROM users WHERE email = ?',
+  //   [email]);
+  // }
+  
+    static findLogin(email) {
+      if (email === undefined) {
+        throw new Error('Email parameter is undefined');
+        // Or alternatively, you could set email to null
+        // email = null;
+      }
+      return db.execute('SELECT * FROM users WHERE email = ?', [email]);
+    }
+
+  static findN(name) {
+    return db.execute('SELECT * FROM users WHERE name = ?',
+    [name]);
   }
 
   static showAll(adminCompanyName) {

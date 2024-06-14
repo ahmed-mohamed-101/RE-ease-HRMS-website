@@ -14,7 +14,7 @@ exports.clockIn = async (req, res) => {
     const month = now.getMonth() + 1; // getMonth() returns 0-11
     const year = now.getFullYear();
     // const hours = now.getHours();
-    const hours = 9;
+    const hours = 8;
     // const minutes = now.getMinutes();
     const minutes = 0;
     const date = `${day}-${month}-${year}`;
@@ -145,7 +145,7 @@ exports.clockOut = async (req, res) => {
         company_name : userCompanyName
       };
       await attendance_out.save(attendanceDetails); 
-      return res.status(200).json({ msg: 'clock out is closed at 20:00 .. but it is successfull clock_out', Status: clockOutStatus});
+      return res.status(200).json({ msg: 'clock out is closing at 20:00 .. but it is successfull clock_out', Status: clockOutStatus});
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     } 
   }catch (err) {

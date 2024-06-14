@@ -6,6 +6,11 @@ module.exports = class admin {
     [email]);
   }
 
+  static findN(name) {
+    return db.execute('SELECT * FROM admins WHERE name = ?',
+    [name]);
+  }
+
   static save(admin) {
     return db.execute(
       'INSERT INTO admins (name, email, password, company_name, is_admin) VALUES (?, ?, ?, ?, ?)',

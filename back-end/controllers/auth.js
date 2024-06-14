@@ -6,6 +6,10 @@ const admin = require("../models/admin");
 
 const user = require("../models/user");
 
+const stripe_private_key = "sk_test_51PBNvfJo7stJPpDUQOdEtMbnn9EydhrSOqZRGk78edK3C91LPrpIiPLDuDWyu3gYV83DkbbFCmnVHLnVZzxOQIgO009hSBteNv"
+
+const stripe = require("stripe")(stripe_private_key);
+
 exports.adminSignup = async (req, res) => {    
     try {
         const name = req.body.name;
@@ -14,15 +18,28 @@ exports.adminSignup = async (req, res) => {
         const company_name = req.body.company_name;
         let is_admin = 1;
         const hashedPassword = await bcrypt.hash(password, 12);
-        const adminDetails = {
-            name: name,
-            email: email,
-            password: hashedPassword,
-            company_name: company_name,
-            is_admin: is_admin,
-        };
-        const result = await admin.save(adminDetails);
-        return res.status(200).json({ message: "admin registered!" });
+
+        const findEmail = await admin.find(email)
+        const findEmail1 = findEmail[0]
+
+        const findName = await admin.findN(name)
+        const findName1 = findName[0]
+
+        if (findEmail1.length != 0){
+            return res.status(500).json({ message: "this email already exist" });
+        }else if (findName1.length != 0) {
+            return res.status(500).json({ message: "this name already exist" });
+        }else{
+            const adminDetails = {
+                name: name,
+                email: email,
+                password: hashedPassword,
+                company_name: company_name,
+                is_admin: is_admin,
+            };
+            const result = await admin.save(adminDetails);
+            return res.status(200).json({ message: "admin registered!" });
+        }
     } catch (err) {
         console.error(err); // Log the error for debugging purposes
         return res.status(500).json({ msg: 'Internal server error', error: err.message });
@@ -35,7 +52,7 @@ exports.adminLogin = async (req, res) => {
     const password = req.body.password;    
     const Admin = await admin.find(email);
     if (Admin[0].length !== 1) {
-        return res.status(500).json({ message: "An admin with this email could not be found." });
+        return res.status(500).json({ message: "email is wrong." });
     }
     const storedAdmin = Admin[0][0];
     const isEqual = await bcrypt.compare(password, storedAdmin.password);
@@ -54,7 +71,7 @@ exports.adminLogin = async (req, res) => {
         "secretfortoken",
         { expiresIn: "30d" }
     );
-    return res.status(200).json({ token: token, payment_id: storedAdmin.payment_id });
+        return res.status(200).json({ token: token, payment_id: storedAdmin.payment_id });
     } catch (err) {
         console.error(err); // Log the error for debugging purposes
         return res.status(500).json({ msg: 'Internal server error', error: err.message });
@@ -68,9 +85,16 @@ exports.userLogin = async (req, res) => {
     const User = await user.findLogin(email);
         
     const storedUser = User[0][0];
-    if (!(password === storedUser.password)) {
+
+    if (User[0].length !== 1) {
+        return res.status(500).json({ message: "email is wrong." });
+    }
+
+    const isEqual = await bcrypt.compare(password, storedUser.password);
+    if (!isEqual) {
         return res.status(500).json({ message: "Wrong password!" });
     }
+
     const token = jwt.sign(
         {
         userId: storedUser.id,

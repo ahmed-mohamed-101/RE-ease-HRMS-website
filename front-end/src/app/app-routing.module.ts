@@ -10,6 +10,9 @@ import { AdminmanagreComponent } from './components/adminmanagre/adminmanagre.co
 import { AdduserComponent } from './components/adduser/adduser.component';
 import { EditEmployeeComponent } from './components/adminmanageusers/edit-employee/edit-employee.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { UserLayoutComponent } from './components/user-layout/user-layout.component';
+import { TakeAttendenceComponent } from './components/take-attendence/take-attendence.component';
 
 
 const routes: Routes = [
@@ -28,8 +31,14 @@ const routes: Routes = [
   },
 
   {path:'adduser',component:AdduserComponent },
-  {path:'edituser/:id',component:EditEmployeeComponent}
-];
+  {path:'edituser/:id',component:EditEmployeeComponent},
+  {path:'userLogin',component:UserLoginComponent},
+  {path:'userLayout',component:UserLayoutComponent, children:[
+    {path:'takeatt',component:TakeAttendenceComponent}
+  ]
+    },
+    
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

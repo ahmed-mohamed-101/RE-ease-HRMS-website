@@ -18,6 +18,10 @@ import { SystemlayoutComponent } from './components/systemlayout/systemlayout.co
 import { AdduserComponent } from './components/adduser/adduser.component';
 import { EditEmployeeComponent } from './components/adminmanageusers/edit-employee/edit-employee.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { UserLayoutComponent } from './components/user-layout/user-layout.component';
+import { TakeAttendenceComponent } from './components/take-attendence/take-attendence.component';
+import { UsersidebarComponent } from './components/usersidebar/usersidebar.component';
 
 
 
@@ -36,6 +40,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AdduserComponent,
     EditEmployeeComponent,
     DashboardComponent,
+    UserLoginComponent,
+    UserLayoutComponent,
+    TakeAttendenceComponent,
+    UsersidebarComponent,
   ],
   imports: [
     BrowserModule,
