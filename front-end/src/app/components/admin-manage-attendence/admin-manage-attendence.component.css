@@ -1,0 +1,13 @@
+section{
+    background-color: #fbfbfb;
+    min-height: 100vh;
+    }
+    .btn-search{
+        background-color: var(--main-color);
+        }
+        h2{
+            color: #36ccff;
+        }
+        a{
+           text-decoration: none;
+        }

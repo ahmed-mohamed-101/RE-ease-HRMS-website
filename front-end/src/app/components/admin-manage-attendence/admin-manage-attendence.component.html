@@ -1,0 +1,64 @@
+<section class="py-3">
+  <!-- search -->
+  <div class="row my-3 mx-auto">
+    <div class="col-md-4">
+      <input
+        type="search"
+        class="form-control"
+        placeholder="Search By Email"
+        [(ngModel)]="userEmail"
+        (input)="onSearchInput()"
+      />
+    </div>
+    <div class="col-md-4">
+      <input
+        type="search"
+        class="form-control"
+        placeholder="Search By Date"
+        [(ngModel)]="userDate"
+        (input)="onSearchInput()"
+      />
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-search w-50 text-white" (click)="handleForm()">
+        <i class="fa-solid fa-magnifying-glass fs-7 px-2 my-1"></i>Search
+      </button>
+    </div>
+  </div>
+
+  <!-- leave requests -->
+  <h2 class="fw-bolder mx-3 my-5 pt-5">Manage Attendence</h2>
+  <table class="table px-4 py-2">
+    <thead>
+      <tr class="">
+        <th>ID</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Clock_In</th>
+        <th>In_Status</th>
+        <th>Clock_Out</th>
+        <th>Out_Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of attendence">
+        <td>{{ item.id }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.date }}</td>
+        <td>{{ item.clock_in }}</td>
+        <td>{{ item.in_status }}</td>
+        <td>{{ item.clock_out }}</td>
+        <td>{{ item.out_status }}</td>
+        <td>
+          <a
+            class="text-muted fw-bold"
+            [routerLink]="['../../editAttendence', item.id]"
+            ><i class="fa-regular fa-pen-to-square text-muted fs-6 mx-2"></i
+            >Edit</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

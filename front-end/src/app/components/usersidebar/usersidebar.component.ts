@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { DecodedService } from 'src/app/shared/services/decoded.service';
 
 @Component({
   selector: 'app-usersidebar',
   templateUrl: './usersidebar.component.html',
-  styleUrls: ['./usersidebar.component.css']
+  styleUrls: ['./usersidebar.component.css'],
 })
 export class UsersidebarComponent implements OnInit {
-
-  constructor() { }
+  constructor(private _DecodedService: DecodedService) {}
 
   ngOnInit(): void {
     this.initNavbarToggle();
+    this.userData();
   }
 
   initNavbarToggle(): void {
@@ -21,8 +22,13 @@ export class UsersidebarComponent implements OnInit {
       navbarCollapse?.classList.toggle('show');
     });
   }
+  deleteItem() {
+    localStorage.removeItem('etoken');
+  }
 
-
+  userInfo: any;
+  userData(): void {
+    this.userInfo = this._DecodedService.getUserInfo();
+    console.log(this.userInfo);
+  }
 }
-
-

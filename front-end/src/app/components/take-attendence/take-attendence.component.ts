@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DecodedService } from 'src/app/shared/services/decoded.service';
 import { EmployeesService } from 'src/app/shared/services/employees.service';
 
 @Component({
@@ -9,41 +10,20 @@ import { EmployeesService } from 'src/app/shared/services/employees.service';
 })
 export class TakeAttendenceComponent implements OnInit {
   token: string | null;
-  constructor(private _EmployeesService: EmployeesService) {
+  constructor(
+    private _EmployeesService: EmployeesService,
+    private _DecodedService: DecodedService
+  ) {
     this.token = localStorage.getItem('etoken');
   }
-  userForm!: FormGroup;
 
-  ngOnInit(): void {
-    this.userForm = new FormGroup({
-      leaveType: new FormControl('', [Validators.required]),
-      startDate: new FormControl('', [Validators.required]),
-      endDate: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-    });
-  }
-  message:any;
-
-  // leaveForm
-  handleForm() {
-    if (this.userForm.valid) {
-      this._EmployeesService
-        .applyLeave(this.token, this.userForm.value)
-        .subscribe({
-          next: (response) => {
-            console.log(response.msg);
-          },
-        });
-    } else {
-      console.log('Form is invalid');
-    }
-  }
+  message: any;
   // clockIn
   clockIn() {
     this._EmployeesService.clockIn(this.token).subscribe({
       next: (response) => {
         console.log(response);
-        this.message=response.msg;
+        this.message = response.msg;
       },
     });
   }
@@ -53,8 +33,15 @@ export class TakeAttendenceComponent implements OnInit {
     this._EmployeesService.clockOut(this.token).subscribe({
       next: (response) => {
         console.log(response);
-        this.message=response.msg;
+        this.message = response.msg;
       },
     });
+  }
+
+  // userInfo
+  userInfo: any;
+  ngOnInit(): void {
+    this.userInfo = this._DecodedService.getUserInfo();
+    console.log(this.userInfo);
   }
 }

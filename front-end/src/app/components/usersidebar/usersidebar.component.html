@@ -1,35 +1,68 @@
 <!-- navbar navbar-expand-lg navbar-light bg-light flex-column -->
-<nav class="bg-light navvv">
+<nav class="navvv">
   <button class="navbar-toggler" type="button">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse w-100 flex-column mb-5">
     <!-- <h3 class=" aa mb-2 h4">Admin Panel</h3> -->
 
-    <div class="header-nav d-flex flex-column w-100 mb-0 ">
+    <div class="header-nav d-flex flex-column w-100 mb-0">
       <div class="text-center mb-1 my-4">
-        <img class="image" src="../../../assets/images/person.png" style=" border-radius: 45%;
-        background-image: linear-gradient(to right,white,#36ccff);" alt="">
+        <img
+          class="image"
+          src="../../../assets/images/person.png"
+          style="
+            border-radius: 45%;
+            background-image: linear-gradient(to right, white, #36ccff);
+          "
+          alt=""
+        />
       </div>
-      <p class=" h5 text-center my-3" style="color: #36ccff;">Welcome,</p>
-      <p class=" h5 text-black text-center ">ahmed mohamed</p>
+      <p class="h5 text-center my-3" style="color: #36ccff">
+        Welcome Employee,
+      </p>
+      <p class="h5 text-black text-center">{{ userInfo.userName }}</p>
     </div>
-    <hr class="border border-primary border-2 opacity-25 w-50 mb-2" style="border-color:#36ccff !important ;">
-    <ul class="navbar-nav d-flex ">
+    <hr
+      class="border border-primary border-2 opacity-25 w-50 mb-2"
+      style="border-color: #36ccff !important"
+    />
+    <ul class="navbar-nav d-flex">
       <li class="nav-item py-1">
-        <a class="nav-link " [routerLink]="['/systemlayout/dashboard']" routerLinkActive="active-link"><i class="fa-solid fa-chart-line px-2 fs-6"></i>Dashboard<i class="fa-solid fa-chevron-right px-2 fa-sm"></i></a>
+        <a
+          class="nav-link"
+          [routerLink]="['/userLayout/dashboarduser']"
+          routerLinkActive="active-link"
+          ><i class="fa-solid fa-chart-line px-2 fs-6"></i>Dashboard<i
+            class="fa-solid fa-chevron-right px-2 fa-sm"
+          ></i
+        ></a>
       </li>
       <li class="nav-item py-1">
-        <a class="nav-link" [routerLink]="['/systemlayout/adminmanageusers']" routerLinkActive="active-link"><i class="fa-solid fa-user-gear px-2 fs-6"></i>Manage Useres<i class="fa-solid fa-chevron-right px-2 fa-sm"></i></a>
+        <a
+          class="nav-link"
+          [routerLink]="['/userLayout/takeatt']"
+          routerLinkActive="active-link"
+          ><i class="fa-solid fa-clipboard-user px-2 fs-6"></i>Take Attendence<i
+            class="fa-solid fa-chevron-right px-2 fa-sm"
+          ></i
+        ></a>
       </li>
       <li class="nav-item py-1">
-        <a class="nav-link" [routerLink]="['/systemlayout/adminmanagere']" routerLinkActive="active-link" ><i class="fa-solid fa-house px-2 fs-6"></i>Mange RealEstate<i class="fa-solid fa-chevron-right px-2 fa-sm"></i></a>
+        <a
+          class="nav-link"
+          [routerLink]="['/userLayout/leaveReq']"
+          routerLinkActive="active-link"
+          ><i class="fa-solid fa-person-walking px-2 fs-6"></i>Leave Request<i
+            class="fa-solid fa-chevron-right px-2 fa-sm"
+          ></i
+        ></a>
       </li>
       <li class="nav-item py-1">
-        <a class="nav-link" [routerLink]="['/home']" ><i class="fa fa-sign-out px-2 fs-6" aria-hidden="true"></i>Log Out</a>
+        <a class="nav-link" [routerLink]="['/home']" (click)="deleteItem()"
+          ><i class="fa fa-sign-out px-2 fs-6" aria-hidden="true"></i>Log Out</a
+        >
       </li>
     </ul>
-
   </div>
 </nav>
-

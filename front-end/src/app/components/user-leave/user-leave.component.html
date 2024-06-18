@@ -1,0 +1,117 @@
+<section class="py-2">
+  <div>
+    <h2 class="mx-2 fw-bold my-4">Apply Leave Request</h2>
+    <form class="fw-bold" [formGroup]="userForm" (ngSubmit)="applyLeave()">
+      <div class="row w-75 mx-auto">
+        <div class="px-5 pb-2 col-md-6">
+          <label for="leave" class="mb-1">Leave Type</label>
+          <input
+            formControlName="leaveType"
+            class="form-control py-2"
+            id="leave"
+            type="text"
+          />
+        </div>
+        <div class="px-5 pb-2 col-md-6">
+          <label for="start" class="mb-1">Start Date</label>
+          <input
+            formControlName="startDate"
+            class="form-control py-2"
+            id="start"
+            type="date"
+          />
+        </div>
+        <div class="px-5 pb-2 col-md-6">
+          <label for="end" class="mb-1">End Date</label>
+          <input
+            formControlName="endDate"
+            class="form-control py-2"
+            id="end"
+            type="date"
+          />
+        </div>
+        <div class="px-5 pb-2 col-md-6">
+          <label for="desc" class="mb-1">Description</label>
+          <input
+            formControlName="description"
+            class="form-control py-2"
+            id="desc"
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button
+          [disabled]="userForm.invalid"
+          class="btn btn-search d-block w-25 mx-auto text-white text-uppercase"
+        >
+          Request
+        </button>
+      </div>
+
+      <p class="text-center my-3 text-success text-uppercase">
+        {{ userData }}
+      </p>
+    </form>
+    <hr />
+    <!-- <h2 class="fw-bolder my-2 mx-3">Search</h2> -->
+    <div class="my-2 row w-50 mx-auto">
+      <div class="col-md-4">
+        <input
+          (input)="onSearchInput()"
+          [(ngModel)]="userLeave"
+          type="search"
+          class="form-control my-2"
+          placeholder="Leave Type"
+        />
+      </div>
+      <div class="col-md-4">
+        <input
+          (input)="onSearchInput()"
+          [(ngModel)]="userStatus"
+          type="search"
+          class="form-control my-2"
+          placeholder="Status"
+        />
+      </div>
+      <button
+        class="btn btn-search d-block w-25 mx-auto text-white my-2 col-md-4"
+        (click)="handleForm()"
+      >
+        <i class="fa-solid fa-magnifying-glass fs-7 px-2 my-1"></i>Search
+      </button>
+    </div>
+    <div class="m-3">
+      <h2 class="fw-bold h3 mx-2 my-3">Leave Request Data</h2>
+      <table class="table p-3">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Leave Type</th>
+            <th>Start_Date</th>
+            <th>End_Date</th>
+            <th>Status</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of employeeData">
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.leave_type }}</td>
+            <td>{{ item.start_date }}</td>
+            <td>{{ item.end_date }}</td>
+            <td>{{ item.status }}</td>
+
+            <td>
+              <a [routerLink]="['../../popup', item.id]"
+                ><i class="fa-solid fa-ellipsis ms-5"></i
+              ></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

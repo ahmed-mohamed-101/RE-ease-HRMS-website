@@ -1,0 +1,101 @@
+<section class="py-3">
+  <!-- search -->
+  <div class="row my-3 mx-auto">
+    <div class="col-md-3">
+      <input
+        type="search"
+        class="form-control"
+        placeholder="Search By Name"
+        (input)="onSearchInput()"
+        [(ngModel)]="userName"
+      />
+    </div>
+    <div class="col-md-3">
+      <input
+        type="search"
+        class="form-control"
+        placeholder="Search By LeaveType"
+        (input)="onSearchInput()"
+        [(ngModel)]="userLeaveType"
+      />
+    </div>
+    <div class="col-md-3">
+      <input
+        type="search"
+        class="form-control"
+        placeholder="Search By Status"
+        (input)="onSearchInput()"
+        [(ngModel)]="userStatus"
+      />
+    </div>
+    <div class="col-md-3">
+      <button (click)="handleForm()" class="btn btn-search w-50 text-white">
+        <i class="fa-solid fa-magnifying-glass fs-7 px-2 my-1"></i>Search
+      </button>
+    </div>
+  </div>
+
+  <!-- leave requests -->
+  <h2 class="fw-bolder mx-3 my-5 pt-5">Leave Requests</h2>
+  <table class="table tab-content">
+    <thead class="">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Leave_Type</th>
+        <th>Start_Date</th>
+        <th>End_Date</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of leaves">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.leave_type }}</td>
+        <td>{{ item.start_date }}</td>
+        <td>{{ item.end_date }}</td>
+        <td>{{ item.status }}</td>
+        <td>
+          <button
+            class="btn btn-text border-success text-success"
+            (click)="changeStatusApproved(item.id)"
+          >
+            <i class="fa-regular fa-circle-check mx-3 text-success fs-6"></i
+            ><br />
+            Approve
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-text border-danger text-danger"
+            (click)="changeStatusRejected(item.id)"
+          >
+            <i class="fa-regular fa-circle-xmark mx-3 text-danger fs-6"></i
+            ><br />
+            Reject
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-text border-secondary text-secondary"
+            [routerLink]="['../../adminDescription', item.id]"
+          >
+            <i class="fa-solid fa-circle-info mx-3 text-muted fs-6"></i><br />
+            View Details
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-text border-black" (click)="delete(item.id)">
+            <i class="fa-regular fa-trash-can mx-3 text-dark fs-6"></i><br />
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

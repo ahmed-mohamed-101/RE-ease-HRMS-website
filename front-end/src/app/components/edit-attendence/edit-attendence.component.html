@@ -1,0 +1,72 @@
+<body class="add py-1">
+  <section>
+    <form
+      class="w-50 mx-auto bg-white mt-5 rounded pb-5 fw-bold"
+      [formGroup]="userForm"
+      (ngSubmit)="editUser(userId)"
+    >
+      <div class="">
+        <h2 class="text-main text-center pt-5 fw-bold">Edit Attendence</h2>
+        <button
+          class="btn btn-arrow"
+          routerLink="/systemlayout/adminManageAttendence"
+        >
+          <i class="fa-solid fa-arrow-left fw-bold fs-2"></i>
+        </button>
+      </div>
+
+      <div>
+        <div class="px-5 pb-2">
+          <label for="date">Date</label>
+          <input
+            formControlName="date"
+            class="form-control py-2"
+            id="date"
+            type="tel"
+          />
+        </div>
+        <div class="px-5 py-2">
+          <label for="clock_in">Clock_In</label>
+          <input
+            formControlName="clock_in"
+            class="form-control py-2"
+            id="clock_in"
+            type="tel"
+          />
+        </div>
+
+        <div class="px-5 py-2">
+          <label for="in_status">In_Status</label>
+          <input
+            formControlName="in_status"
+            class="form-control py-2"
+            id="in_status"
+            type="text"
+          />
+        </div>
+        <div class="px-5 py-2">
+          <label for="clock_out">Clock_Out</label>
+          <input
+            formControlName="clock_out"
+            class="form-control py-2"
+            id="clock_out"
+            type="tel"
+          />
+        </div>
+        <div class="px-5 py-2">
+          <label for="out_status">Out_Status</label>
+          <input
+            formControlName="out_status"
+            class="form-control py-2"
+            id="out_status"
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <!-- <button  class="btn  btn-oval  py-2 me-5 mt-4 text-uppercase" (click)="handleForm()" >add</button> -->
+        <button class="btn btn-oval py-2 me-5 mt-4 text-uppercase">Edit</button>
+      </div>
+    </form>
+  </section>
+</body>
