@@ -83,6 +83,7 @@ export class AdminManageLeavesComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log(response);
+          this.showLeaves();
           this._ToastrService.success(response.msg);
         },
       });
@@ -90,10 +91,11 @@ export class AdminManageLeavesComponent implements OnInit {
   statusRejected: { status: string } = { status: 'rejected' };
   changeStatusRejected(leaveId: any) {
     this._ManageusersService
-      .changeStatus(leaveId, this.statusApproved)
+      .changeStatus(leaveId, this.statusRejected)
       .subscribe({
         next: (response) => {
           console.log(response);
+          this.showLeaves();
           this._ToastrService.success(response.msg);
         },
       });

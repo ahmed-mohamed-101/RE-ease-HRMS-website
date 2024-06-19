@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DecodedService } from 'src/app/shared/services/decoded.service';
 
 @Component({
   selector: 'app-sidenavbar',
@@ -7,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _DecodedService:DecodedService) { }
 
   ngOnInit(): void {
     this.initNavbarToggle();
+    this.userData()
   }
 
   initNavbarToggle(): void {
@@ -30,6 +32,13 @@ export class SidenavbarComponent implements OnInit {
 
 
 
+}
+
+
+userInfo: any;
+userData(): void {
+  this.userInfo = this._DecodedService.getUserInfo();
+  console.log(this.userInfo);
 }
 
 }

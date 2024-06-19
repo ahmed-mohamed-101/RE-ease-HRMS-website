@@ -48,7 +48,9 @@ export class UserLeaveComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log(response);
+
           this.userData = response.msg;
+          this.showUserData()
         },
       });
   }

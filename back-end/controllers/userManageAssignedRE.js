@@ -44,22 +44,28 @@ exports.changeStatus = async (req, res) => {
     const verify = jwt.verify(token,secret)
     const {userCompanyName , userName} = verify;
 
+    const now = new Date();
+    const day = now.getDate();
+    const month = now.getMonth() + 1; 
+    const year = now.getFullYear();
+    const date = `${day}-${month}-${year}`;
+
     const result = await RE.getRE(REId)
     const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
     const status = result1[0]['status']
 
     if (status == "for sale"){
-      await db.execute('UPDATE re SET status = ? WHERE id = ?',
-        ["sold out", REId]);
+      await db.execute('UPDATE re SET status = ?, done_date = ? WHERE id = ?',
+        ["sold out", date, REId]);
       return res.status(200).json({msg: "status succssfuly updated for sold out"});
     }else if (status == "for rent"){
-      await db.execute('UPDATE re SET status = ? WHERE id = ?',
-        ["rented", REId]);
+      await db.execute('UPDATE re SET status = ?, done_date = ? WHERE id = ?',
+        ["rented",date, REId]);
       return res.status(200).json({msg: "status succssfuly updated for rented"});
     }
-    return res.status(200).json("we didnt change the status ");
+    return res.status(200).json("didnt change the status ");
   } catch (err) {
-    console.error(err); // Log the error for debugging purposes
+    console.error(err);
     return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 }

@@ -40,6 +40,4 @@ module.exports = class leave {
       return db.execute('SELECT * FROM leaves WHERE company_name = ? AND name = ?',
       [userCompanyName, userName]);
     }
-
-    
 };
