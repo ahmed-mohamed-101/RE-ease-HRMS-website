@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2024 at 01:28 AM
+-- Generation Time: Jun 19, 2024 at 02:35 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -82,8 +82,10 @@ CREATE TABLE `attendance` (
 INSERT INTO `attendance` (`id`, `email`, `date`, `clock_in`, `in_status`, `clock_out`, `out_status`, `company_name`) VALUES
 (1, 'mahdy@gmail.com', '4-6-2024', '9:0', 'on time', '17:0', 'on time', 'REease'),
 (2, 'mahdy@gmail.com', '11-6-2024', '9:0', 'on time', '17:0', 'on time', 'REease'),
-(3, 'shady@gmail.com', '11-6-2024', '9:0', 'on time', NULL, 'on time', 'REease'),
-(6, 'khaled@gmail.com', '15-6-2024', '8:0', 'on time', '17:0', 'on time', 'REease');
+(3, 'khaled@gmail.com', '11-17-2024', '9:0', 'on time', '20:0', 'extra', 'REease'),
+(6, 'khaled@gmail.com', '17-6-2024', '8:0', 'on time', '17:0', 'extra', 'REease'),
+(7, 'khaled@gmail.com', '11-6-2024', '10:0', 'absent', '20:0', 'extra', 'REease'),
+(8, 'khaled@gmail.com', '19-6-2024', '8:0', 'on time', '17:0', 'on time', 'REease');
 
 -- --------------------------------------------------------
 
@@ -107,12 +109,45 @@ CREATE TABLE `leaves` (
 --
 
 INSERT INTO `leaves` (`id`, `name`, `leave_type`, `start_date`, `end_date`, `description`, `status`, `company_name`) VALUES
-(4, 'mahdy', 'medical leave', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'rejected', 'REease'),
-(5, 'mahdy', 'medical leave', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'approved', 'REease'),
-(6, 'mahdy', 'other', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'pending', 'REease'),
-(7, 'mahdy', 'othersssssssss', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'pending', 'REease'),
-(10, 'khaled', 'medical leave', '12-6-2024', '15-6-2024', 'iam very sick and i cant come to work', 'pending', 'REease'),
-(11, 'khaled', 'family leave', '12-6-2024', '15-6-2024', 'iam very sick and i cant come to work', 'pending', 'REease');
+(5, 'mahdy', 'medical leave', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'rejected', 'REease'),
+(6, 'mahdy', 'other', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'approved', 'REease'),
+(7, 'mahdy', 'othersssssssss', '3-6-2024', '5-6-2024', 'iam very sick and i cant come to work', 'rejected', 'REease'),
+(10, 'khaled', 'medical leave', '12-6-2024', '15-6-2024', 'iam very sick and i cant come to work', 'rejected', 'REease'),
+(12, 'khaled', 'Distinctio Culpa re', '2017-07-12', '1992-09-21', 'Quo voluptatum odit ', 'pending', 'REease'),
+(13, 'khaled', 'Autem cillum volupta', '2012-11-05', '2002-02-18', 'Quia animi ullamco ', 'pending', 'REease');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payroll`
+--
+
+CREATE TABLE `payroll` (
+  `id` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `position` varchar(255) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
+  `basic` int(255) NOT NULL,
+  `absent_attendance` int(255) NOT NULL,
+  `extra_attendance` int(255) NOT NULL,
+  `done_RE` int(255) NOT NULL,
+  `allowance` int(255) DEFAULT NULL,
+  `deduction` int(255) DEFAULT NULL,
+  `total` int(255) NOT NULL,
+  `month` int(255) NOT NULL,
+  `year` int(255) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payroll`
+--
+
+INSERT INTO `payroll` (`id`, `name`, `position`, `company_name`, `basic`, `absent_attendance`, `extra_attendance`, `done_RE`, `allowance`, `deduction`, `total`, `month`, `year`, `status`) VALUES
+(2, 'mohamed', 'frontend developer', 'REease', 15000, 750, 281, 1000, 300, 400, 15431, 7, 2024, 'not paid'),
+(3, 'khaled', 'frontend developer', 'REease', 15000, 750, 281, 1000, 300, 400, 15431, 6, 2024, 'not paid'),
+(4, 'khaled', 'frontend developer', 'REease', 15000, 750, 281, 1000, 300, 550, 15281, 6, 2024, 'paid'),
+(5, 'khaled', 'frontend developer', 'REease', 15000, 750, 188, 1000, 300, 550, 15188, 6, 2024, 'not paid');
 
 -- --------------------------------------------------------
 
@@ -127,6 +162,7 @@ CREATE TABLE `re` (
   `address` varchar(255) NOT NULL,
   `size` int(255) NOT NULL,
   `status` varchar(255) NOT NULL,
+  `done_date` text DEFAULT NULL,
   `price` int(255) NOT NULL,
   `assigned_to` varchar(255) NOT NULL,
   `company_name` varchar(255) NOT NULL,
@@ -137,12 +173,10 @@ CREATE TABLE `re` (
 -- Dumping data for table `re`
 --
 
-INSERT INTO `re` (`id`, `owner`, `type`, `address`, `size`, `status`, `price`, `assigned_to`, `company_name`, `document`) VALUES
-(2, 'khaled', 'appartment', 'giza', 200, 'sold out', 150000, 'khaled', 'REease', NULL),
-(3, 'zyad', 'appartment', 'giza', 150, 'rented', 150000, 'mohamed', 'REease', NULL),
-(4, 'zyad', 'appartment', 'giza', 150, 'for sale', 150000, 'mohamed', 'REease', 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
-(5, 'jhon', 'appartment', 'giza', 117, 'for rent', 150000, 'khaled', 'REease', 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
-(6, 'lila', 'house', 'cairo', 110, 'for sale', 200000, 'khaled', 'REease', 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+INSERT INTO `re` (`id`, `owner`, `type`, `address`, `size`, `status`, `done_date`, `price`, `assigned_to`, `company_name`, `document`) VALUES
+(2, 'khaled', 'appartment', 'giza', 200, 'for sale', '16-6-2024', 150000, 'khaled', 'REease', NULL),
+(7, 'khaled', 'appartment', 'giza', 200, 'sold out', '16-6-2024', 150000, 'khaled', 'REease', NULL),
+(8, 'khaled', 'appartment', 'giza', 200, 'rented', '16-6-2024', 150000, 'khaled', 'REease', NULL);
 
 -- --------------------------------------------------------
 
@@ -166,7 +200,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `company_name`, `position`, `salary`, `is_admin`) VALUES
-(70, 'shady', 'shady@gmail.com', '$2a$12$pnpWoGscEjNtP4sMisiueeWxTiwfzTN7sEVOW9SrYqx.fRgNa.dLW', 'REease', 'frontend developer', 15000, 0),
 (71, 'shady1', 'shady1@gmail.com', '$2a$12$0VBRs1SmL2G2tcllljBym.FsPMvnlBWo/Ejr2xEBLHdvfivahu10S', 'REease', 'frontend developer', 15000, 0),
 (72, 'Luke Clayton', 'nytadyga@mailinator.com', '$2a$12$hplV0DnjgN3.aVcnsAoG/.YygXeRxIE8MiKaZE5xMGTSDXTkIO9.O', 'company555', 'Perspiciatis aliqui', 1, 0),
 (73, 'khaled', 'khaled@gmail.com', '$2a$12$89Y7lX6ZsxS5xaPIGg/FWOqnNZHJH6q54/8mzNVRMXxJWYa/u6aPe', 'REease', 'frontend developer', 15000, 0);
@@ -191,6 +224,12 @@ ALTER TABLE `attendance`
 -- Indexes for table `leaves`
 --
 ALTER TABLE `leaves`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payroll`
+--
+ALTER TABLE `payroll`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -219,25 +258,31 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `payroll`
+--
+ALTER TABLE `payroll`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `re`
 --
 ALTER TABLE `re`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
