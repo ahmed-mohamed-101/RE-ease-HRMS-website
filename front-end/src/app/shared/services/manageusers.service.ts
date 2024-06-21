@@ -132,4 +132,54 @@ export class ManageusersService {
       attendenceData
     );
   }
+
+  // payrolls------------------------
+
+  // showPayrolls
+  showPayrolls(token: any): Observable<any> {
+    return this._HttpClient.post(
+      `http://localhost:3000/adminManagePayroll/showAll`,
+      this.token
+    );
+  }
+
+  // getPay
+  getPay(userId: any): Observable<any> {
+    return this._HttpClient.get(
+      `http://localhost:3000/adminManagePayroll/pay/${userId}`
+    );
+  }
+
+  // deletePayroll
+  deletePayroll(userId: any): Observable<any> {
+    return this._HttpClient.get(
+      `http://localhost:3000/adminManagePayroll/delete/${userId}`
+    );
+  }
+
+  // searchPayroll
+  searchPayroll(userData: object): Observable<any> {
+    return this._HttpClient.post(
+      `http://localhost:3000/adminManagePayroll/search`,
+      userData
+    );
+  }
+
+  // generate
+  generate(token: any, userData: any): Observable<any> {
+    return this._HttpClient.post(
+      `http://localhost:3000/adminManagePayroll/generate`,
+      { token, ...userData }
+    );
+  }
+
+  // dashboard---------------------------
+
+  // dashboard
+  dashboard(token: any): Observable<any> {
+    return this._HttpClient.post(
+      `http://localhost:3000/adminDashboard/dashboard`,
+      this.token
+    );
+  }
 }

@@ -1,1 +1,70 @@
-<section></section>
+<section class="py-2">
+  <h1 class="my-4 mx-3 fw-bold">Employee Dashboard</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">
+              <img src="./assets/images/Group 1.png" alt="" />
+            </h5>
+            <p class="card-text">Total Attendence This Month</p>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ details.totalAttendanceThisMonth }}
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">
+              <img src="./assets/images/Group 4.png" alt="" />
+            </h5>
+            <p class="card-text">Total Leaves</p>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ details.totalLeaves }}
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">
+              <img src="./assets/images/Group 2.png" alt="" />
+            </h5>
+            <p class="card-text">Total Leaves Pending</p>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ details.totalLeavesPending }}
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title">
+              <img src="./assets/images/Group 4-2.png" alt="" />
+            </h5>
+            <p class="card-text">Total Assigned Real Estate</p>
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{ details.totalAssignedRealEstates }}
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card my-3 mx-2" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">
+        <img src="./assets/images/Group 2-1.png" alt="" />
+      </h5>
+      <p class="card-text">Total Done Real Estates</p>
+      <h6 class="card-subtitle mb-2 text-muted">
+        {{ details.totalDoneRealEstates }}
+      </h6>
+    </div>
+  </div>
+</section>

@@ -64,4 +64,36 @@ export class EmployeesService {
       userData
     );
   }
+
+  // payroll---------------------
+
+  // showPayroll
+  showPayroll(token: any): Observable<any> {
+    return this._HttpClient.post(
+      `http://localhost:3000/userManagePayroll/showAll`,
+      this.token
+    );
+  }
+
+  // searchPayroll
+  searchPayroll(userData: object): Observable<any> {
+    return this._HttpClient.post(
+      `http://localhost:3000/userManagePayroll/search`,
+      userData
+    );
+  }
+  // getPaySlip
+  getPaySlip(userId: any): Observable<any> {
+    return this._HttpClient.get(
+      `http://localhost:3000/userManagePayroll/getPayslip/${userId}`
+    );
+  }
+
+  // dashboard
+  dashboard(token: any): Observable<any> {
+    return this._HttpClient.post(
+      `http://localhost:3000/userDashboard/dashboard`,
+      this.token
+    );
+  }
 }

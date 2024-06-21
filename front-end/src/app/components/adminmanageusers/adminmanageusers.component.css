@@ -26,24 +26,8 @@ a{
   background-color: #fbfbfb;
   min-height: 100vh;
 }
-:placeholder-shown{
-color: #c4c4c4;
-font-size: large;
-}
-.input-container {
-position: relative;
-}
 
-.input-container input[type="text"] {
-padding-left: 30px; /* Adjust as needed based on the width of your icon */
-}
 
-.input-container .icon {
-position: absolute;
-left: 10px; /* Adjust to position the icon */
-top: 50%;
-transform: translateY(-50%);
-}
 
 .manage-i{
 color: #3E4954;
@@ -57,10 +41,7 @@ color: #3E4954;
 border: none;
 
 }
-input{
-border: none;
 
-}
 .btn-search{
 background-color: var(--main-color);
 color: #3E4954;

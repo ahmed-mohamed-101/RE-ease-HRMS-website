@@ -21,16 +21,25 @@ import { AdminManageLeavesComponent } from './components/admin-manage-leaves/adm
 import { AdminDescriptionComponent } from './components/admin-description/admin-description.component';
 import { EditAttendenceComponent } from './components/edit-attendence/edit-attendence.component';
 import { UserPayrollComponent } from './components/user-payroll/user-payroll.component';
+import { UserPayslipComponent } from './components/user-payslip/user-payslip.component';
+import { AdminManagePayrollComponent } from './components/admin-manage-payroll/admin-manage-payroll.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'payment', component: PaymentComponent },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+    title: 'Real Estate Ease',
+  },
+  { path: 'signup', component: SignupComponent, title: 'Real Estate Ease' },
+  { path: 'login', component: LoginComponent, title: 'Real Estate Ease' },
+  { path: 'home', component: HomeComponent, title: 'Real Estate Ease' },
+  { path: 'payment', component: PaymentComponent, title: 'Real Estate Ease' },
   {
     path: 'systemlayout',
     component: SystemlayoutComponent,
+    title: 'Real Estate Ease',
+
     children: [
       { path: 'adminmanageusers', component: AdminmanageusersComponent },
       { path: 'adminmanagere', component: AdminmanagreComponent },
@@ -43,16 +52,30 @@ const routes: Routes = [
         path: 'adminManageAttendence',
         component: AdminManageAttendenceComponent,
       },
+      {
+        path: 'adminManagePayrolls',
+        component: AdminManagePayrollComponent,
+      },
     ],
   },
 
-  { path: 'adduser', component: AdduserComponent },
-  { path: 'edituser/:id', component: EditEmployeeComponent },
+  { path: 'adduser', component: AdduserComponent, title: 'Real Estate Ease' },
+  {
+    path: 'edituser/:id',
+    component: EditEmployeeComponent,
+    title: 'Real Estate Ease',
+  },
   { path: 'userLogin', component: UserLoginComponent },
-  { path: 'editAttendence/:id', component: EditAttendenceComponent },
+  {
+    path: 'editAttendence/:id',
+    component: EditAttendenceComponent,
+    title: 'Real Estate Ease',
+  },
+
   {
     path: 'userLayout',
     component: UserLayoutComponent,
+    title: 'Real Estate Ease',
     children: [
       { path: 'takeatt', component: TakeAttendenceComponent },
       {
@@ -63,8 +86,17 @@ const routes: Routes = [
       { path: 'userPayroll', component: UserPayrollComponent },
     ],
   },
-  { path: 'popup/:id', component: PopUpComponent },
-  { path: 'adminDescription/:id', component: AdminDescriptionComponent },
+  {
+    path: 'userPayslip/:id',
+    component: UserPayslipComponent,
+    title: 'Real Estate Ease',
+  },
+  { path: 'popup/:id', component: PopUpComponent, title: 'Real Estate Ease' },
+  {
+    path: 'adminDescription/:id',
+    component: AdminDescriptionComponent,
+    title: 'Real Estate Ease',
+  },
 ];
 
 @NgModule({

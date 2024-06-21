@@ -32,6 +32,8 @@ import { EditAttendenceComponent } from './components/edit-attendence/edit-atten
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { UserPayrollComponent } from './components/user-payroll/user-payroll.component';
+import { UserPayslipComponent } from './components/user-payslip/user-payslip.component';
+import { AdminManagePayrollComponent } from './components/admin-manage-payroll/admin-manage-payroll.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { UserPayrollComponent } from './components/user-payroll/user-payroll.com
     AdminManageAttendenceComponent,
     EditAttendenceComponent,
     UserPayrollComponent,
+    UserPayslipComponent,
+    AdminManagePayrollComponent,
   ],
   imports: [
     BrowserModule,
