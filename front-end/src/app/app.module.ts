@@ -18,8 +18,12 @@ import { SystemlayoutComponent } from './components/systemlayout/systemlayout.co
 import { AdduserComponent } from './components/adduser/adduser.component';
 import { EditEmployeeComponent } from './components/adminmanageusers/edit-employee/edit-employee.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CommonModule } from '@angular/common';
+import { AddreComponent } from './components/addre/addre.component';
+import { EditreComponent } from './components/editre/editre.component';
+import { UsermanagereComponent } from './components/usermanagere/usermanagere.component';
 
-
+import { DocumentViewComponent } from './components/document-view/document-view.component'; 
 
 @NgModule({
   declarations: [
@@ -36,6 +40,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AdduserComponent,
     EditEmployeeComponent,
     DashboardComponent,
+    AddreComponent,
+    EditreComponent,
+    UsermanagereComponent,
+
+    DocumentViewComponent,
   ],
   imports: [
     BrowserModule,

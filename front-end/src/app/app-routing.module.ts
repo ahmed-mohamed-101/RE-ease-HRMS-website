@@ -10,25 +10,31 @@ import { AdminmanagreComponent } from './components/adminmanagre/adminmanagre.co
 import { AdduserComponent } from './components/adduser/adduser.component';
 import { EditEmployeeComponent } from './components/adminmanageusers/edit-employee/edit-employee.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
-
+import { AddreComponent } from './components/addre/addre.component';
+import { EditreComponent } from './components/editre/editre.component';
+import { UsermanagereComponent } from './components/usermanagere/usermanagere.component';
+import { DocumentViewComponent } from './components/document-view/document-view.component';
 const routes: Routes = [
-  {path:'',redirectTo:'home',pathMatch:'full'},
-  {path:'signup',component:SignupComponent},
-  {path:'login',component:LoginComponent},
-  {path:'home',component:HomeComponent },
-  {path:'payment',component:PaymentComponent},
-  {  path:'systemlayout', component:SystemlayoutComponent,
-  children: [
-   {path:'adminmanageusers',component:AdminmanageusersComponent},
-   {path:'adminmanagere',component:AdminmanagreComponent},
-   {path:'dashboard',component:DashboardComponent}
-
-  ]
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'payment', component: PaymentComponent },
+  {
+    path: 'systemlayout', component: SystemlayoutComponent,
+    children: [
+      { path: 'adminmanageusers', component: AdminmanageusersComponent },
+      { path: 'adminmanagere', component: AdminmanagreComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'addre', component: AddreComponent },
+      { path: 'editre/:id', component: EditreComponent }
+    ]
   },
 
-  {path:'adduser',component:AdduserComponent },
-  {path:'edituser/:id',component:EditEmployeeComponent}
+  {path:'usermanagere',component:UsermanagereComponent},
+  { path: 'document-view/:url', component: DocumentViewComponent },
+  { path: 'adduser', component: AdduserComponent },
+  { path: 'edituser/:id', component: EditEmployeeComponent }
 ];
 
 @NgModule({

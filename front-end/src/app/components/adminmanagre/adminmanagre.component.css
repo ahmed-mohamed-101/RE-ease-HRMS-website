@@ -1,0 +1,21 @@
+
+section{
+    background-color: #FBFBFB;
+
+}
+
+.gg{
+    background-color: var(--main-color);
+} 
+.badge-bandage {
+    background-color:var(--main-color); /* Blue background color */
+    color: #fff; /* White text color */
+    padding: 0.25rem 0.5rem; /* Padding to adjust size */
+    transform: rotate(-45deg); /* Rotate the badge */
+    transform-origin: top left; /* Adjust rotation origin */
+    border-radius: 0.25rem; /* Rounded corners */
+  }
+  .badge-container {
+    padding: 0.5rem; /* Padding around the badge */
+  }
+  
