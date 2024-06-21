@@ -36,7 +36,7 @@ export class UserLoginComponent {
       this._EmployeesService.userLogin(this.loginform.value).subscribe({
         next: (response) => {
           console.log(response);
-          this._Router.navigate(['/userLayout/takeatt']);
+          this._Router.navigate(['/userLayout/dashboarduser']);
           this.isloading = false;
           localStorage.setItem('etoken', response.token);
         },

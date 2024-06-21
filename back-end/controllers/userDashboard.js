@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const db = require('../util/database');
 
+
 exports.dashboard = async (req, res) => {
   try {
     const token = req.body.token;
@@ -39,7 +40,8 @@ exports.dashboard = async (req, res) => {
       ['sold out' , 'rented', userName, userCompanyName]);
     const result10 = result9.flatMap(arr => arr.filter(obj => !obj._buf));
     const totalDoneRealEstates = result10[0]["count"]
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
     return res.status(200).json({totalAttendanceThisMonth: totalAttendanceThisMonth, totalLeaves: totalLeaves, totalLeavesPending: totalLeavesPending, totalAssignedRealEstates: totalAssignedRealEstates, totalDoneRealEstates: totalDoneRealEstates});
   } catch (err) {
     console.error(err); // Log the error for debugging purposes

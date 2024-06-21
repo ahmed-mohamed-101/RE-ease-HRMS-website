@@ -1,12 +1,15 @@
 const jwt = require("jsonwebtoken");
 const db = require('../util/database');
+const stripe_private_key = "sk_test_51PBNvfJo7stJPpDUQOdEtMbnn9EydhrSOqZRGk78edK3C91LPrpIiPLDuDWyu3gYV83DkbbFCmnVHLnVZzxOQIgO009hSBteNv"
+const admin = require('../models/admin')
+const stripe = require("stripe")(stripe_private_key);
 
 exports.dashboard = async (req, res) => {
   try {
     const token = req.body.token;
     const secret = "secretfortoken" 
     const verify = jwt.verify(token,secret)
-    const {adminCompanyName} = verify;
+    const {adminCompanyName, email} = verify;
     const now = new Date();
     const yesterday = now.getDate() - 1;
     const month = now.getMonth() + 1;
@@ -71,6 +74,12 @@ exports.dashboard = async (req, res) => {
     const result20 = result19.flatMap(arr => arr.filter(obj => !obj._buf));
 
     const totalEmployees = result20[0]["count"]
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------
+    const customer = await stripe.customers.search({query: `email:"${email}"`,});
+    console.log(customer)
+    const paymentId = customer.data[0].id;
+    console.log(paymentId)
+    await admin.updatePaymentId(paymentId, email);
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------
     return res.status(200).json({totalAttendanceYesterday: totalAttendanceYesterday, totalLeavesApproved: totalLeavesApproved, totalLeavesRejected: totalLeavesRejected, totalLeavesPending:totalLeavesPending, donePayrollThisMonth: donePayrollThisMonth, donePayrollThisMonth: donePayrollThisMonth, donePayrollThisYear: donePayrollThisYear, totalRealEstates: totalRealEstates, totalsoldOutRealEstates: totalsoldOutRealEstates, totalrentedRealEstates: totalrentedRealEstates, totalEmployees: totalEmployees});
   } catch (err) {

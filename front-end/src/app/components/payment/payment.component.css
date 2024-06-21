@@ -2,7 +2,7 @@ body{
   background-image: url('../../../assets/images/home.jpg');
   background-size: cover;
   background-position: center center;
-  height: 100vh;
+  height: 110vh;
 }
 
 .service ,#subscribtion .sub

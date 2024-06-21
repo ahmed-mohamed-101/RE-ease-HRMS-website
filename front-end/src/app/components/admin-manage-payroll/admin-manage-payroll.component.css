@@ -8,3 +8,7 @@ h1,h2{
 .btn-search{
     background-color: var(--main-color);
     }
+
+    p{
+      color: #36ccff;
+  }

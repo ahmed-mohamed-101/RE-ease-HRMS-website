@@ -1,3 +1,4 @@
+
 <section class="py-2">
   <h1 class="my-3 mx-2 fw-bold">Generate Payrolls</h1>
   <form [formGroup]="userForm" (ngSubmit)="generateForm()">
@@ -101,11 +102,10 @@
         <th>ID</th>
         <th>Name</th>
         <th>Basic</th>
-        <th>Allowance</th>
-        <th>Deduction</th>
-        <th>Total</th>
         <th>Month</th>
         <th>Year</th>
+        <th>Total</th>
+        <th>summary</th>
         <th>Status</th>
         <th></th>
       </tr>
@@ -114,12 +114,62 @@
       <tr *ngFor="let item of payrolls">
         <td>{{ item.id }}</td>
         <td>{{ item.name }}</td>
-        <td>{{ item.basic }}</td>
-        <td>{{ item.allowance }}</td>
-        <td>{{ item.deduction }}</td>
-        <td>{{ item.total }}</td>
+        <td>{{ item.basic }} EGP</td>
         <td>{{ item.month }}</td>
         <td>{{ item.year }}</td>
+        <td>{{ item.total }} EGP</td>
+
+
+<td>
+          <div class="dropdown px-5">
+            <button
+              class="btn"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-ellipsis fs-5"></i>
+            </button>
+            <ul
+              class="dropdown-menu px-3"
+              aria-labelledby="dropdownMenuButton1 "
+            >
+              <p>
+                Basic:
+                <span class="text-muted mx-1">{{ item.basic }}</span>
+              </p>
+              <hr>
+              <p>
+                +Allowance:
+                <span class="text-muted mx-1">{{ item.allowance }}</span>
+              </p>
+              <p>
+                +Extra Attend.:
+                <span class="text-muted mx-1">{{ item.extra_attendance }}</span>
+              </p>
+              <p>
+                +Done RE:
+                <span class="text-muted mx-1">{{ item.done_RE }}</span>
+              </p>
+              <p>
+                -Deduction:
+                <span class="text-muted mx-1">{{ item.deduction }}</span>
+              </p>
+              <p>
+                -Absent Attend.:
+                <span class="text-muted mx-1">{{
+                  item.absent_attendance
+                }}</span>
+              </p>
+              <hr>
+              <p>
+                Total:
+                <span class="text-muted mx-1">{{ item.total }}</span>
+              </p>
+            </ul>
+          </div>
+        </td>
         <td>{{ item.status }}</td>
         <td>
           <button class="btn text-info" (click)="getPay(item.id)">

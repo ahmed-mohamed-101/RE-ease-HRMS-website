@@ -88,3 +88,18 @@ a,a:hover{
   color: var(--light-color) !important;
   border-radius: 5px;
 }
+
+
+/* .bb{
+    background-color: var(--main-color);
+    transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+    color: white;
+}
+
+
+.bb:hover{
+
+    color:var(--main-color) !important;
+    background-color: white !important;
+    border: var(--main-color) 1px solid !important;
+} */

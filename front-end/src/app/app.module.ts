@@ -34,6 +34,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserPayrollComponent } from './components/user-payroll/user-payroll.component';
 import { UserPayslipComponent } from './components/user-payslip/user-payslip.component';
 import { AdminManagePayrollComponent } from './components/admin-manage-payroll/admin-manage-payroll.component';
+import { AddreComponent } from './components/addre/addre.component';
+import { EditreComponent } from './components/editre/editre.component';
+import { UsermanagereComponent } from './components/usermanagere/usermanagere.component';
+import { DocumentViewComponent } from './components/document-view/document-view.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +68,10 @@ import { AdminManagePayrollComponent } from './components/admin-manage-payroll/a
     UserPayrollComponent,
     UserPayslipComponent,
     AdminManagePayrollComponent,
+    AddreComponent,
+    EditreComponent,
+    UsermanagereComponent,
+    DocumentViewComponent,
   ],
   imports: [
     BrowserModule,

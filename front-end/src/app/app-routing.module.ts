@@ -23,6 +23,10 @@ import { EditAttendenceComponent } from './components/edit-attendence/edit-atten
 import { UserPayrollComponent } from './components/user-payroll/user-payroll.component';
 import { UserPayslipComponent } from './components/user-payslip/user-payslip.component';
 import { AdminManagePayrollComponent } from './components/admin-manage-payroll/admin-manage-payroll.component';
+import { AddreComponent } from './components/addre/addre.component';
+import { EditreComponent } from './components/editre/editre.component';
+import { UsermanagereComponent } from './components/usermanagere/usermanagere.component';
+import { DocumentViewComponent } from './components/document-view/document-view.component';
 
 const routes: Routes = [
   {
@@ -44,6 +48,8 @@ const routes: Routes = [
       { path: 'adminmanageusers', component: AdminmanageusersComponent },
       { path: 'adminmanagere', component: AdminmanagreComponent },
       { path: 'dashboard', component: DashboardComponent },
+      {path:'addre',component:AddreComponent},
+      {path:'editre/:id',component:EditreComponent},
       {
         path: 'adminManageLeaves',
         component: AdminManageLeavesComponent,
@@ -58,6 +64,7 @@ const routes: Routes = [
       },
     ],
   },
+
 
   { path: 'adduser', component: AdduserComponent, title: 'Real Estate Ease' },
   {
@@ -84,6 +91,7 @@ const routes: Routes = [
       },
       { path: 'dashboarduser', component: DashboardUserComponent },
       { path: 'userPayroll', component: UserPayrollComponent },
+      {path:'usermanagere',component:UsermanagereComponent},
     ],
   },
   {
@@ -92,6 +100,9 @@ const routes: Routes = [
     title: 'Real Estate Ease',
   },
   { path: 'popup/:id', component: PopUpComponent, title: 'Real Estate Ease' },
+  {
+    path:'document-view',component: DocumentViewComponent
+  },
   {
     path: 'adminDescription/:id',
     component: AdminDescriptionComponent,

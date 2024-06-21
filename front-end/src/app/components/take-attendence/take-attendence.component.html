@@ -15,6 +15,13 @@
     <h2 class="fw-bolder mx-2 my-5">Employee Information</h2>
     <div class="my-5 w-50 mx-5 px-5">
       <h6 class="my-4">
+        <i class="fa-solid fa-id-badge px-2"></i>ID:<span
+          class="mx-2 text-black"
+          >{{ userInfo.userId }}</span
+        >
+      </h6>
+      <hr />
+      <h6 class="my-4">
         <i class="fa-solid fa-file-signature px-2"></i>Name:
         <span class="mx-2 text-black">{{ userInfo.userName }}</span>
       </h6>
@@ -26,24 +33,19 @@
         >
       </h6>
       <hr />
-      <h6 class="my-4">
-        <i class="fa-solid fa-id-badge px-2"></i>ID:<span
-          class="mx-2 text-black"
-          >{{ userInfo.userId }}</span
-        >
-      </h6>
-      <hr />
-      <h6 class="my-4">
-        <i class="fa-solid fa-dollar-sign px-2"></i>Salary:<span
-          class="mx-2 text-black"
-          >{{ userInfo.userSalary }}</span
-        >
-      </h6>
-      <hr />
+
+
       <h6 class="my-4">
         <i class="fa-solid fa-user-tie px-2"></i>Position:<span
           class="mx-2 text-black"
           >{{ userInfo.userposition }}</span
+        >
+      </h6>
+      <hr />
+      <h6 class="my-4">
+        <i class="fa-solid fa-dollar-sign px-2"></i>Basic Salary:<span
+          class="mx-2 text-black"
+          >{{ userInfo.userSalary }}</span
         >
       </h6>
     </div>

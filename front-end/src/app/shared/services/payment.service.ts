@@ -45,9 +45,9 @@ export class PaymentService {
     return this._HttpClient.post(`http://localhost:3000/payment/monthly`, this.token)
   }
 
- confirmpayment():Observable<any>{
-return this._HttpClient.post(`http://localhost:3000/payment/confirmPayment`, this.token)
- }
+//  confirmpayment():Observable<any>{
+// return this._HttpClient.post(`http://localhost:3000/payment/confirmPayment`, this.token)
+//  }
 
 
 }

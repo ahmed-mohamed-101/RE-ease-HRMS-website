@@ -1,6 +1,6 @@
 <section>
   <div class="payslip w-50 mx-auto" *ngFor="let item of payslip">
-    <div class="row py-5 justify-content-between">
+    <div class="row pt-5 justify-content-between">
       <h6 class="col-md-4 mx-5 ps-4 text-info h2 fw-bold">
         {{ item.company_name }}
       </h6>
@@ -15,24 +15,24 @@
     </div>
 
     <div class="py-4 text-center">
+
       <h6 class="text-info mx-3">
         Employee ID: <span class="mx-2 text-muted">{{ item.id }}</span>
       </h6>
       <h6 class="text-info mx-3">
-        Payslip ID: <span class="mx-2 text-muted">{{ userInfo.userId }}</span>
-      </h6>
-
-      <h6 class="text-info mx-3">
-        Position: <span class="mx-2 text-muted">{{ item.position }}</span>
+        Name: <span class="mx-2 text-muted">{{ item.name }}</span>
       </h6>
       <h6 class="text-info mx-3">
         Email: <span class="mx-2 text-muted">{{ userInfo.email }}</span>
       </h6>
 
       <h6 class="text-info mx-3">
-        Name: <span class="mx-2 text-muted">{{ item.name }}</span>
+        Position: <span class="mx-2 text-muted">{{ item.position }}</span>
       </h6>
-
+        <br>
+      <h6 class="text-info mx-3">
+        Payslip ID: <span class="mx-2 text-muted">{{ userInfo.userId }}</span>
+      </h6>
       <h6 class="text-info mx-3">
         Payment Status: <span class="mx-2 text-muted">{{ item.status }}</span>
       </h6>
@@ -48,18 +48,18 @@
         <hr class="ms-2 w-50" />
         <div class="mx-4">
           <h6 class="text-info">
-            Basic: <span class="text-muted mx-2">{{ item.basic }}</span>
+            + Basic: <span class="text-muted mx-2">{{ item.basic }}</span>
           </h6>
           <h6 class="text-info">
-            Extra Attendence:<span class="text-muted mx-2">{{
+            + Extra Attendence:<span class="text-muted mx-2">{{
               item.extra_attendance
             }}</span>
           </h6>
           <h6 class="text-info">
-            Allowence:<span class="text-muted mx-2">{{ item.allowance }}</span>
+            + DoneRE:<span class="text-muted mx-2">{{ item.done_RE }}</span>
           </h6>
           <h6 class="text-info">
-            DoneRE:<span class="text-muted mx-2">{{ item.done_RE }}</span>
+            + Allowence:<span class="text-muted mx-2">{{ item.allowance }}</span>
           </h6>
         </div>
       </div>
@@ -72,11 +72,11 @@
         <hr class="ms-2 w-50" />
         <div class="mx-4">
           <h6 class="text-info">
-            Absent Day:
+            - Absent Day:
             <span class="text-muted mx-2">{{ item.absent_attendance }}</span>
           </h6>
           <h6 class="text-info">
-            Deduction: <span class="text-muted mx-2">{{ item.deduction }}</span>
+            - Deduction: <span class="text-muted mx-2">{{ item.deduction }}</span>
           </h6>
         </div>
       </div>

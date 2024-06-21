@@ -11,21 +11,21 @@ import { PaymentService } from 'src/app/shared/services/payment.service';
 })
 export class DashboardComponent implements OnInit {
   constructor(
-    private _PaymentService: PaymentService,
+    // private _PaymentService: PaymentService,
     private _ManageusersService: ManageusersService
   ) {}
 
   token: any = localStorage.getItem('id');
 
   ngOnInit(): void {
-    this._PaymentService.confirmpayment().subscribe({
-      next: (Response) => {
-        console.log(Response);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    // this._PaymentService.confirmpayment().subscribe({
+    //   next: (Response) => {
+    //     console.log(Response);
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   },
+    // });
 
     this.dashboard();
   }
