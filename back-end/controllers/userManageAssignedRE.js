@@ -63,7 +63,7 @@ exports.changeStatus = async (req, res) => {
         ["rented",date, REId]);
       return res.status(200).json({msg: "status succssfuly updated for rented"});
     }
-    return res.status(200).json("didnt change the status ");
+    return res.status(200).json({msg:"already changed .."});
   } catch (err) {
     console.error(err);
     return res.status(500).json({ msg: 'Internal server error', error: err.message });
@@ -76,7 +76,8 @@ exports.viewDocument = async (req, res) => {
 
     const result = await RE.showDocument(REId)
     const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
-    return res.status(200).json(...result1);
+    console.log(result1[0].document)
+    return res.status(200).json({document :result1[0].document});
   } catch (err) {
     console.error(err); // Log the error for debugging purposes
     return res.status(500).json({ msg: 'Internal server error', error: err.message });

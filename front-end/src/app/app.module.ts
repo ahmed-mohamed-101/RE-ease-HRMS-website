@@ -38,6 +38,8 @@ import { AddreComponent } from './components/addre/addre.component';
 import { EditreComponent } from './components/editre/editre.component';
 import { UsermanagereComponent } from './components/usermanagere/usermanagere.component';
 import { DocumentViewComponent } from './components/document-view/document-view.component';
+import { DocumentReComponent } from './components/document-re/document-re.component';
+import { DocAdminComponent } from './components/doc-admin/doc-admin.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { DocumentViewComponent } from './components/document-view/document-view.
     EditreComponent,
     UsermanagereComponent,
     DocumentViewComponent,
+    DocumentReComponent,
+    DocAdminComponent,
   ],
   imports: [
     BrowserModule,

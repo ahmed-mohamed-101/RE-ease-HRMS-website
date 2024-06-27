@@ -15,6 +15,8 @@ import { ActivatedRoute, Router} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { RedataService } from 'src/app/shared/services/redata.service';
 import { RouterLink,RouterModule,RouterLinkActive } from '@angular/router';
+import { ManageusersService } from 'src/app/shared/services/manageusers.service';
+import { ToastrService } from 'ngx-toastr';
 // import { Router } from '@angular/router';
 @Component({
   selector: 'app-adminmanagre',
@@ -22,40 +24,27 @@ import { RouterLink,RouterModule,RouterLinkActive } from '@angular/router';
   styleUrls: ['./adminmanagre.component.css']
 })
 export class AdminmanagreComponent implements OnInit {
-  constructor(private _RedataService: RedataService,private _Router:Router) {}
+  token: string | null;
+  constructor(private _RedataService: RedataService,private _Router:Router , private _ManageusersService:ManageusersService,
+    private _ToastrService:ToastrService
+  ) {
+    this.token = localStorage.getItem('etoken');
+  }
 
-  realestates: any[] = [];
-  filterizedre: any[] = [];
-  searchterm: string = '';
-  searchPerformed: boolean = false;
-
+  // realestates: any[] = [];
+  // filterizedre: any[] = [];
+  // searchterm: string = '';
+  // searchPerformed: boolean = false;
 
 
 
   ngOnInit(): void {
-    this._RedataService.getallrealestate().subscribe({
-      next: (response: any) => {
-        this.realestates = response;
-        // console.log(this.realestates);
-      },
-      error: (err: any) => {
-        console.log(err.error.message);
-      }
-    });
+
+    this.showRE()
+
   }
 
-  searchre(): void {
-    this._RedataService.searchre(this.searchterm).subscribe({
-      next: (response: any) => {
-        this.filterizedre = response;
-        this.searchPerformed = true; // Mark that a search has been performed
-        console.log(this.filterizedre);
-      },
-      error: (err: any) => {
-        console.log(err.error.message);
-      }
-    });
-  }
+
 
 
 
@@ -68,20 +57,59 @@ export class AdminmanagreComponent implements OnInit {
   }
 
 
-  deleteRealEstate(id: number) {
-    if (confirm('Are you sure you want to delete this real estate?')) {
-      this._RedataService.deleteRealEstate(id).subscribe({
-        next: () => {
-          console.log('Real estate deleted successfully');
-          // Remove the deleted item from the local array
-          this.realestates = this.realestates.filter(re => re.id !== id);
-        },
-        error: (err) => {
-          console.error('Error deleting real estate:', err);
-        }
-      });
-    }
+
+
+   // showRE
+   RE: any = [];
+   showRE() {
+     this._ManageusersService.showRE(this.token).subscribe({
+       next: (response) => {
+         this.RE = response;
+         console.log(response);
+       },
+     });
+   }
+
+
+  // search
+  searchNew:string='';
+  userSearch:any={}
+
+handleForm(){
+this.userSearch={
+  token:this.token,
+  search:this.searchNew
+}
+
+this._ManageusersService.searchRE(this.userSearch).subscribe({
+  next:(response)=>{
+console.log(response);
+this.RE=response
+
   }
+})
+}
+
+onSearchInput(){
+  let searchRENew=this.searchNew.trim()
+ if(!searchRENew){
+   this.showRE()
+ }
+}
+
+// delete
+delete(reId:any){
+
+  this._ManageusersService.deleteRE(reId).subscribe({
+    next:(response)=>{
+console.log(response);
+this._ToastrService.success(response.message)
+this.showRE()
+
+    }
+
+  })
+ }
 
 
 }

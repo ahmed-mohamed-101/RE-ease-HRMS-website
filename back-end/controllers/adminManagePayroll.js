@@ -1,11 +1,8 @@
-const payroll = require("../models/payroll")
 const jwt = require("jsonwebtoken");
 const db = require('../util/database');
 
 exports.generate = async (req, res) => {
-  
     let month = req.body.month;
-    console.log(month)
     let year = req.body.year;
     let name = req.body.name;
 
@@ -15,44 +12,66 @@ exports.generate = async (req, res) => {
     const {adminCompanyName} = verify;
     let companyName = `${adminCompanyName}`
 
+/////////////////////////////////////////////////////////////////////////////
     const result = await db.execute('SELECT * FROM users WHERE name = ? AND company_name = ?',
       [name, adminCompanyName]);
     const result1 = result.flatMap(arr => arr.filter(obj => !obj._buf));
+    console.log(result1)
+    if(result1.length == 0){
+      return res.status(500).json({ msg: "employee name dosent exist"});
+    }
 
     let position =  result1[0].position;
     let basic = result1[0].salary;
+    let email = result1[0].email;
 
-    const email = result1[0].email;
+/////////////////////////////////////////////////////////////////////////////
+
     const result2 = await db.execute('SELECT COUNT(*) AS count FROM (SELECT * FROM attendance WHERE email = ? AND date LIKE ? AND in_status = ? AND company_name = ?) AS count1',
       [email, '%-'+month+ '-%', 'absent', adminCompanyName]);
     const result3 = result2.flatMap(arr => arr.filter(obj => !obj._buf));
 
-    let absentAttendance = result3[0].count 
+    let onTimeAttendance = result3[0].count 
+    let absentAttendance = 20 - onTimeAttendance 
+    console.log(absentAttendance)
+
+/////////////////////////////////////////////////////////////////////////////
 
     const result4 = await db.execute('SELECT COUNT(*) AS count FROM (SELECT * FROM attendance WHERE email = ? AND date LIKE ? AND out_status = ? AND company_name = ?) AS count1',
       [email, '%-'+month+ '-%', 'extra', adminCompanyName]);
     const result5 = result4.flatMap(arr => arr.filter(obj => !obj._buf));
 
     let extraAttendance = result5[0].count;
+    console.log(extraAttendance)
+
+
+/////////////////////////////////////////////////////////////////////////////
 
     const result6 = await db.execute('SELECT COUNT(*) AS count FROM (SELECT * FROM re WHERE status IN (?, ?) AND done_date LIKE ? AND assigned_to = ? AND company_name = ?) AS count1',
       ['sold out', 'rented', '%-'+month+ '-%', name,  adminCompanyName]);
     const result7 = result6.flatMap(arr => arr.filter(obj => !obj._buf));
 
     let doneRE = result7[0].count;
+    console.log(doneRE)
+
+
+/////////////////////////////////////////////////////////////////////////////
 
     const absentAttendance1 = absentAttendance * (basic / 20)
     const extraAttendance1 = extraAttendance * (basic / 160)
     const doneRE1 = doneRE * 500
-    const allowance = req.body.allowance
-    const deduction = req.body.deduction
+    const allowance1 = req.body.allowance
+    const allowance = 1 * allowance1
+
+    const deduction1 = req.body.deduction
+    const deduction = 1 * deduction1
     const total = (basic + extraAttendance1 + doneRE1 + allowance) - absentAttendance1 - deduction
     
     const validateParameters = (params) => {
       let counter= 0
       for (const param of params) {
         if (param === undefined) {
-          throw new Error(`Bind parameters must not contain undefined ${counter}`);
+          return res.status(500).json({ msg: `Bind parameters must not contain undefined ${counter}`});
         }
         counter++
       }
@@ -89,19 +108,9 @@ exports.generate = async (req, res) => {
   }
 }
 
-// exports.generatePyaroll = async (req, res) => {
-//   try {
-
-//     // await db.execute('INSERT INTO payroll (name, position, company_name, basic, absent_attendance, extra_attendance, done_RE, allowance, deduction, total, month, year, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-//     // [name, position, companyName, basic, absentAttendance1, extraAttendance1, doneRE1, allowance, deduction, total, month, year, 'not paid']);
-//     return res.status(200).json({msg: 'payroll added successfully ..'});
-//   } catch (err) {
-//     console.error(err); // Log the error for debugging purposes
-//     return res.status(500).json({ msg: 'Internal server error', error: err.message });
-//   }
-// }
 
 exports.search = async (req, res) => {
+
   try {
     const name = req.body.name;
     const month = req.body.month;
@@ -167,3 +176,15 @@ exports.delete = async (req, res) => {
     return res.status(500).json({ msg: 'Internal server error', error: err.message });
   }
 }
+
+// exports.generatePyaroll = async (req, res) => {
+  //   try {
+  
+  //     // await db.execute('INSERT INTO payroll (name, position, company_name, basic, absent_attendance, extra_attendance, done_RE, allowance, deduction, total, month, year, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+  //     // [name, position, companyName, basic, absentAttendance1, extraAttendance1, doneRE1, allowance, deduction, total, month, year, 'not paid']);
+  //     return res.status(200).json({msg: 'payroll added successfully ..'});
+  //   } catch (err) {
+  //     console.error(err); // Log the error for debugging purposes
+  //     return res.status(500).json({ msg: 'Internal server error', error: err.message });
+  //   }
+  // }

@@ -15,6 +15,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { RedataService } from 'src/app/shared/services/redata.service';
 
 @Component({
@@ -25,7 +26,9 @@ import { RedataService } from 'src/app/shared/services/redata.service';
 export class AddreComponent implements OnInit {
   token: string | null;
 
-  constructor(private _RedataService: RedataService, private _Router: Router) {
+  constructor(private _RedataService: RedataService, private _Router: Router,
+    private _ToastrService:ToastrService
+  ) {
     this.token = localStorage.getItem('etoken');
   }
 
@@ -49,7 +52,9 @@ export class AddreComponent implements OnInit {
       this._RedataService.addre(this.userForm.value, this.token).subscribe({
         next: (response) => {
           console.log(response);
+          this._ToastrService.success(response.message)
           this._Router.navigate(['/systemlayout/adminmanagere']);
+
         },
         error: (error) => {
           console.error('Error:', error);

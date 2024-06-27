@@ -78,7 +78,7 @@ exports.dashboard = async (req, res) => {
     const customer = await stripe.customers.search({query: `email:"${email}"`,});
     console.log(customer)
     const paymentId = customer.data[0].id;
-    console.log(paymentId)
+    // console.log(paymentId)
     await admin.updatePaymentId(paymentId, email);
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------
     return res.status(200).json({totalAttendanceYesterday: totalAttendanceYesterday, totalLeavesApproved: totalLeavesApproved, totalLeavesRejected: totalLeavesRejected, totalLeavesPending:totalLeavesPending, donePayrollThisMonth: donePayrollThisMonth, donePayrollThisMonth: donePayrollThisMonth, donePayrollThisYear: donePayrollThisYear, totalRealEstates: totalRealEstates, totalsoldOutRealEstates: totalsoldOutRealEstates, totalrentedRealEstates: totalrentedRealEstates, totalEmployees: totalEmployees});

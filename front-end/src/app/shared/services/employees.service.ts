@@ -96,4 +96,30 @@ export class EmployeesService {
       this.token
     );
   }
+
+  // RE----------------
+  // showRE
+showRE(token:any):Observable<any>{
+  return this._HttpClient.post(`http://localhost:3000/userManageAssignedRE/showAll`,this.token)
+}
+
+// searchRE
+ searchRE (search:object):Observable<any>{
+  return this._HttpClient.post(`http://localhost:3000/userManageAssignedRE/search`,search)
+ }
+
+ //  getReId
+ viewReDoc(id: any): Observable<any> {
+  return this._HttpClient.get(
+    `http://localhost:3000/userManageAssignedRE//viewDocument/${id}`
+  );
+}
+//  changeStatusRe
+changeStatusRe(id: any, token: any): Observable<any> {
+  return this._HttpClient.post(
+    `http://localhost:3000/userManageAssignedRE/changeStatus/${id}`,
+    this.token
+  );
+}
+
 }

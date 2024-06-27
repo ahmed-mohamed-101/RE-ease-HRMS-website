@@ -49,13 +49,9 @@ export class RedataService {
 
 
 
-  searchre(searchTerm: string): Observable<any> {
-    const body = {
-      token: this.token.token,
-      search: searchTerm
-    };
+  search(search: object): Observable<any> {
 
-    return this._HttpClient.post(`http://localhost:3000/adminManageRE/search`, body);
+    return this._HttpClient.post(`http://localhost:3000/adminManageRE/search`, search);
   }
 
 

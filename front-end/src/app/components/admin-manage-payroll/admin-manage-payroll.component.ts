@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -108,11 +109,16 @@ export class AdminManagePayrollComponent implements OnInit {
         .generate(this.token, this.userForm.value)
         .subscribe({
           next: (response) => {
+            this._ToastrService.success(response.msg)
             console.log(response);
 
             this._ToastrService.success(response.msg);
             this.showAll();
-          },
+          },error:(err)=>{
+            console.log(err);
+
+         this._ToastrService.error(err.HttpErrorResponse.msg)
+          }
         });
     }
   }

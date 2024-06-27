@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ManageusersService } from 'src/app/shared/services/manageusers.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class EditAttendenceComponent implements OnInit {
   constructor(
     private _ManageusersService: ManageusersService,
     private _Router: Router,
-    private _ActivatedRoute: ActivatedRoute
+    private _ActivatedRoute: ActivatedRoute,
+    private _ToastrService:ToastrService
   ) {
     this.token = localStorage.getItem('etoken');
     this.userId = this._ActivatedRoute.snapshot.paramMap.get('id');
@@ -64,6 +66,7 @@ export class EditAttendenceComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log(response);
+          this._ToastrService.success(response.message)
           this._Router.navigate(['/systemlayout/adminManageAttendence']);
         },
       });

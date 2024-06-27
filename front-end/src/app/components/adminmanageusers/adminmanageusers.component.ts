@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ManageusersService } from 'src/app/shared/services/manageusers.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AdminmanageusersComponent implements OnInit {
   constructor(
     private _ManageusersService: ManageusersService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Router: Router
+    private _ToastrService:ToastrService
   ) {}
 
   employeeData: any = [];
@@ -64,6 +65,8 @@ export class AdminmanageusersComponent implements OnInit {
     this._ManageusersService.delete(userId).subscribe({
       next: (response) => {
         console.log(response);
+        this._ToastrService.warning(response.message);
+        this.displayAllUsers
       },
     });
   }

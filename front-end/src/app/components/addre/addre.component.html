@@ -1,45 +1,48 @@
-<section>
-  <form [formGroup]="userForm" (ngSubmit)="handleForm()" class="w-50 mx-auto bg-white mt-5 rounded pb-5 fw-bold">
-    <div>
-      <h2 class="text-main text-center pt-5 fw-bold">Add Real Estate</h2>
-      <button class="btn btn-arrow" routerLink="/systemlayout/adminmanagere">
-        <i class="fa-solid fa-arrow-left fw-bold fs-2"></i>
-      </button>
-    </div>
-    <div class="px-5 pb-2">
-      <label for="owner">Owner</label>
-      <input formControlName="owner" class="form-control py-2" id="owner" type="text">
-    </div>
-    <div class="px-5 py-2">
-      <label for="type">Type</label>
-      <input formControlName="type" class="form-control py-2" id="type" type="text">
-    </div>
-    <div class="px-5 py-2">
-      <label for="address">Address</label>
-      <input formControlName="address" class="form-control py-2" id="address" type="text">
-    </div>
-    <div class="px-5 py-2">
-      <label for="size">Size</label>
-      <input formControlName="size" class="form-control py-2" id="size" type="text">
-    </div>
-    <div class="px-5 py-2">
-      <label for="status">Status</label>
-      <input formControlName="status" class="form-control py-2" id="status" type="text">
-    </div>
-    <div class="px-5 py-2">
-      <label for="price">Price</label>
-      <input formControlName="price" class="form-control py-2" id="price" type="text">
-    </div>
-    <div class="px-5 py-2">
-      <label for="assigned_to">Assigned To</label>
-      <input formControlName="assigned_to" class="form-control py-2" id="assigned_to" type="text">
-    </div>
-    <div class="px-5 py-2">
-      <label for="document">Document</label>
-      <input formControlName="document" class="form-control py-2" id="document" type="text">
-    </div>
-    <div class="d-flex justify-content-end">
-      <button [disabled]="userForm.invalid" class="btn btn-search btn-main mx-2 bb text-uppercase">Add</button>
-    </div>
-  </form>
-</section>
+<body class="py-2 add">
+  <section>
+    <form [formGroup]="userForm" (ngSubmit)="handleForm()" class="w-50 mx-auto bg-white mt-5 rounded pb-5 fw-bold">
+      <div>
+        <h2 class="text-main text-center pt-5 fw-bold">Add Real Estate</h2>
+        <button class="btn btn-arrow" routerLink="/systemlayout/adminmanagere">
+          <i class="fa-solid fa-arrow-left fw-bold fs-2"></i>
+        </button>
+      </div>
+      <div class="px-5 pb-2">
+        <label for="owner">Owner</label>
+        <input formControlName="owner" class="form-control py-2" id="owner" type="text">
+      </div>
+      <div class="px-5 py-2">
+        <label for="type">Type</label>
+        <input formControlName="type" class="form-control py-2" id="type" type="text">
+      </div>
+      <div class="px-5 py-2">
+        <label for="address">Address</label>
+        <input formControlName="address" class="form-control py-2" id="address" type="text">
+      </div>
+      <div class="px-5 py-2">
+        <label for="size">Size</label>
+        <input formControlName="size" class="form-control py-2" id="size" type="text">
+      </div>
+      <div class="px-5 py-2">
+        <label for="status">Status</label>
+        <input formControlName="status" class="form-control py-2" id="status" type="text">
+      </div>
+      <div class="px-5 py-2">
+        <label for="price">Price</label>
+        <input formControlName="price" class="form-control py-2" id="price" type="text">
+      </div>
+      <div class="px-5 py-2">
+        <label for="assigned_to">Assigned To</label>
+        <input formControlName="assigned_to" class="form-control py-2" id="assigned_to" type="text">
+      </div>
+      <div class="px-5 py-2">
+        <label for="document">Document</label>
+        <input formControlName="document" class="form-control py-2" id="document" type="text">
+      </div>
+      <div class="d-flex justify-content-end">
+        <button [disabled]="userForm.invalid" class="btn btn-oval  mx-2 bb text-uppercase">Add</button>
+      </div>
+    </form>
+  </section>
+
+</body>

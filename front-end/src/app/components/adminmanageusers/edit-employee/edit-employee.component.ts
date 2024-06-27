@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ManageusersService } from 'src/app/shared/services/manageusers.service';
 import { AdminmanageusersComponent } from '../adminmanageusers.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-employee',
@@ -18,7 +19,8 @@ export class EditEmployeeComponent implements OnInit {
   constructor(
     private _ManageusersService: ManageusersService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Router: Router
+    private _Router: Router,
+    private _ToastrService:ToastrService
   ) {
     this.token = localStorage.getItem('etoken');
     this.userId = this._ActivatedRoute.snapshot.paramMap.get('id');
@@ -62,6 +64,7 @@ export class EditEmployeeComponent implements OnInit {
     this._ManageusersService.edit(userId, this.userForm.value).subscribe({
       next: (response) => {
         console.log(response);
+        this._ToastrService.success(response.message)
         this._Router.navigate(['/systemlayout/adminmanageusers']);
       },
     });

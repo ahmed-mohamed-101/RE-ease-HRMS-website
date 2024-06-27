@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ManageusersService } from 'src/app/shared/services/manageusers.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class AdduserComponent implements OnInit {
   token: string | null;
   constructor(
     private _ManageusersService: ManageusersService,
-    private _Router: Router
+    private _Router: Router,
+    private _ToastrService:ToastrService
   ) {
     this.token = localStorage.getItem('etoken');
   }
@@ -38,6 +40,7 @@ export class AdduserComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log(response);
+            this._ToastrService.success(response.message)
             this._Router.navigate(['/systemlayout/adminmanageusers']);
           },
         });

@@ -9,16 +9,17 @@
     <div class="header-nav d-flex flex-column w-100 mb-0">
       <div class="text-center mb-1 my-4">
         <img
-          class="image"
-          src="../../../assets/images/person.png"
+          class="image "
+          src="../../../assets/images/image.png"
           style="
             border-radius: 45%;
             background-image: linear-gradient(to right, white, #36ccff);
+            width: 40%;
           "
           alt=""
         />
       </div>
-      <p class="h5 text-center my-3" style="color: #36ccff">Welcome ADMIN,</p>
+      <p class="h5 text-center my-3" style="color: #36ccff">Welcome Admin,</p>
       <p class="h5 text-black text-center">{{ userInfo.adminName }}</p>
     </div>
     <hr
@@ -31,40 +32,28 @@
           class="nav-link"
           [routerLink]="['/systemlayout/dashboard']"
           routerLinkActive="active-link"
-          ><i class="fa-solid fa-chart-line px-2 fs-6"></i>Dashboard<i
-            class="fa-solid fa-chevron-right px-2 fa-sm"
-          ></i
-        ></a>
+          ><i class="fa-solid fa-chart-line px-2 fs-6"></i>Dashboard</a>
       </li>
       <li class="nav-item py-1">
         <a
           class="nav-link"
           [routerLink]="['/systemlayout/adminmanageusers']"
           routerLinkActive="active-link"
-          ><i class="fa-solid fa-user-gear px-2 fs-6"></i>Manage Employees<i
-            class="fa-solid fa-chevron-right px-2 fa-sm"
-          ></i
-        ></a>
+          ><i class="fa-solid fa-user-gear px-2 fs-6"></i>Manage Employees</a>
       </li>
       <li class="nav-item py-1">
         <a
           class="nav-link"
           [routerLink]="['/systemlayout/adminmanagere']"
           routerLinkActive="active-link"
-          ><i class="fa-solid fa-house px-2 fs-6"></i>Mange RealEstate<i
-            class="fa-solid fa-chevron-right px-2 fa-sm"
-          ></i
-        ></a>
+          ><i class="fa-solid fa-house-chimney-window fs-6 px-2"></i>Mange RealEstate</a>
       </li>
       <li class="nav-item py-1">
         <a
           class="nav-link"
           [routerLink]="['/systemlayout/adminManageLeaves']"
           routerLinkActive="active-link"
-          ><i class="fa-solid fa-person-walking px-2 fs-6"></i>Leave Requests<i
-            class="fa-solid fa-chevron-right px-2 fa-sm"
-          ></i
-        ></a>
+          ><i class="fa-solid fa-person-walking px-2 fs-6"></i>Leave Requests</a>
       </li>
       <li class="nav-item py-1">
         <a
@@ -72,18 +61,14 @@
           [routerLink]="['/systemlayout/adminManageAttendence']"
           routerLinkActive="active-link"
           ><i class="fa-solid fa-clipboard-user px-2 fs-6"></i>Manage
-          Attendence<i class="fa-solid fa-chevron-right px-2 fa-sm"></i
-        ></a>
+          Attendence</a>
       </li>
       <li class="nav-item py-1">
         <a
           class="nav-link"
           [routerLink]="['/systemlayout/adminManagePayrolls']"
           routerLinkActive="active-link"
-          ><i class="fa-solid fa-sack-dollar px-2 fs-6"></i>Payrolls<i
-            class="fa-solid fa-chevron-right px-2 fa-sm"
-          ></i
-        ></a>
+          ><i class="fa-solid fa-sack-dollar px-2 fs-6"></i>Payrolls</a>
       </li>
       <li class="nav-item py-1">
         <a class="nav-link" [routerLink]="['/home']" (click)="deleteItem()"

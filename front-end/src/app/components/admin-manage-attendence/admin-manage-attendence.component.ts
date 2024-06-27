@@ -43,18 +43,19 @@ export class AdminManageAttendenceComponent implements OnInit {
       email: this.userEmail,
       date: this.userDate,
     };
+
     this._ManageusersService.searchAttendence(this.userSearch).subscribe({
       next: (response) => {
         console.log(response);
         this.attendence = response;
       },
-      error: (err) => {
-        console.log(err);
-      },
     });
   }
+
   onSearchInput() {
-    if (!this.userEmail.trim() && !this.userDate.trim()) {
+    let userEmail: any = this.userEmail.trim();
+    let userDate: any = this.userDate.trim();
+    if (!userEmail && !userDate) {
       this.showAttendence();
     }
   }

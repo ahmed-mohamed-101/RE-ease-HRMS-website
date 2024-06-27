@@ -10,10 +10,11 @@
       <div class="text-center mb-1 my-4">
         <img
           class="image"
-          src="../../../assets/images/person.png"
+          src="../../../assets/images/image.png"
           style="
             border-radius: 45%;
             background-image: linear-gradient(to right, white, #36ccff);
+            width: 40%;
           "
           alt=""
         />
@@ -33,50 +34,35 @@
           class="nav-link"
           [routerLink]="['/userLayout/dashboarduser']"
           routerLinkActive="active-link"
-          ><i class="fa-solid fa-chart-line px-2 fs-6"></i>Dashboard<i
-            class="fa-solid fa-chevron-right px-2 fa-sm"
-          ></i
-        ></a>
+          ><i class="fa-solid fa-chart-line px-2 fs-6"></i>Dashboard</a>
       </li>
       <li class="nav-item py-1">
         <a
           class="nav-link"
           [routerLink]="['/userLayout/usermanagere']"
           routerLinkActive="active-link"
-          ><i class="fa-solid fa-clipboard-user px-2 fs-6"></i>Assigned RE<i
-            class="fa-solid fa-chevron-right px-2 fa-sm"
-          ></i
-        ></a>
+          ><i class="fa-solid fa-house-chimney-window fs-6 px-2"></i>Assigned RE</a>
       </li>
       <li class="nav-item py-1">
         <a
           class="nav-link"
           [routerLink]="['/userLayout/takeatt']"
           routerLinkActive="active-link"
-          ><i class="fa-solid fa-clipboard-user px-2 fs-6"></i>Take Attendence<i
-            class="fa-solid fa-chevron-right px-2 fa-sm"
-          ></i
-        ></a>
+          ><i class="fa-solid fa-clipboard-user px-2 fs-6"></i>Take Attendence</a>
       </li>
       <li class="nav-item py-1">
         <a
           class="nav-link"
           [routerLink]="['/userLayout/leaveReq']"
           routerLinkActive="active-link"
-          ><i class="fa-solid fa-person-walking px-2 fs-6"></i>Leave Request<i
-            class="fa-solid fa-chevron-right px-2 fa-sm"
-          ></i
-        ></a>
+          ><i class="fa-solid fa-person-walking px-2 fs-6"></i>Leave Request</a>
       </li>
       <li class="nav-item py-1">
         <a
           class="nav-link"
           [routerLink]="['/userLayout/userPayroll']"
           routerLinkActive="active-link"
-          ><i class="fa-solid fa-sack-dollar px-2 fs-6"></i>Payroll<i
-            class="fa-solid fa-chevron-right px-2 fa-sm"
-          ></i
-        ></a>
+          ><i class="fa-solid fa-sack-dollar px-2 fs-6"></i>Payroll</a>
       </li>
       <li class="nav-item py-1">
         <a class="nav-link" [routerLink]="['/home']" (click)="deleteItem()"

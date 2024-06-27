@@ -182,4 +182,36 @@ export class ManageusersService {
       this.token
     );
   }
+
+  // manage RE---------------------------
+
+  // showRE
+  showRE(token: any): Observable<any> {
+    return this._HttpClient.post(
+      `http://localhost:3000/adminManageRE/showAll`,
+      this.token
+    );
+  }
+
+  //  searchRE
+  searchRE( search:object): Observable<any> {
+    return this._HttpClient.post(
+      `http://localhost:3000/adminManageRE/search`,
+search
+    );
+  }
+
+  // deleteRE
+  deleteRE(id: any): Observable<any> {
+    return this._HttpClient.get(
+      `http://localhost:3000/adminManageRE/deleteRE/${id}`
+    );
+  }
+
+  // viewRE
+
+viewRE(id:any):Observable<any>{
+  return this._HttpClient.get(`http://localhost:3000/adminManageRE/viewDocument/${id}`)
+}
+
 }

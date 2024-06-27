@@ -2,8 +2,8 @@
 
 <section>
   <div class="d-flex align-items-center my-4 justify-content-center">
-    <input type="search" class="form-control w-25 mx-4 my-3 " placeholder="Search..." [(ngModel)]="searchterm" />
-    <button (click)="searchre()" class="btn btn-search btn-main mx-2 bb"><i class="fa-solid fa-magnifying-glass"></i> Search</button>  </div>
+    <input type="search" class="form-control w-25 mx-4 my-3 " placeholder="Search..." [(ngModel)]="searchRE" (input)="onSearchInput()" />
+    <button (click)="handleForm()" class="btn btn-search btn-main mx-2 bb"><i class="fa-solid fa-magnifying-glass"></i> Search</button>  </div>
 
 
   <div class="container my-4 users">
@@ -13,15 +13,15 @@
       </div>
       </div>
     </div>
-  <!-- </div> -->
+
 
 
   <div class="row row-cols-1 row-cols-md-3 g-4 m-2">
-    <div class="col" *ngFor="let re of (searchPerformed ? filterizedre : realestates)">
+    <div class="col" *ngFor="let item of RE">
       <div class="card rounded-5 position-relative h-100">
         <div class="card-img-top position-relative">
           <div class="position-absolute top-0 start-0 m-2">
-            <span class="badge gg text-white fs-5">{{ re.price }}</span>
+            <span class="badge gg text-white fs-5">{{ item.price }}</span>
           </div>
           <img src="./assets/images/re.jpg" class="card-img-top rounded-3 w-100" alt="...">
           <div class="dropdown position-absolute top-0 end-0 m-2">
@@ -32,13 +32,14 @@
             <ul class="dropdown-menu">
               <li class="d-flex align-items-center cursor-pointer">
                 <i class="fa-regular fa-pen-to-square px-2"></i>
-                <a
-                   class="dropdown-item">Change Status</a>
+                <button
+                   class="dropdown-item btn" (click)="changeStatus(item.id)">Change Status</button>
               </li>
-              <li class="d-flex align-items-center cursor-pointer" (click)="viewDocument(re.id)">
+              <li class="d-flex align-items-center cursor-pointer" >
                 <i class="fa-solid fa-file-lines px-2"></i>
-                <a
+                <a [routerLink]="['../../document',item.id]"
                   class="dropdown-item">View Document</a>
+
               </li>
             </ul>
           </div>
@@ -56,14 +57,14 @@
               <p class="mb-1 text-muted">done_date</p>
             </div>
             <div class="col-6">
-              <p class="mb-1 fw-bold">{{ re.id }}</p>
-              <p class="mb-1 fw-bold">{{ re.owner }}</p>
-              <p class="mb-1 fw-bold">{{ re.type }}</p>
-              <p class="mb-1 fw-bold">{{ re.address }}</p>
-              <p class="mb-1 fw-bold">{{ re.size }} <span>m</span></p>
-              <p class="mb-1 fw-bold">{{ re.assigned_to }}</p>
-              <p class="mb-1 fw-bold">{{ re.status }}</p>
-              <p class="mb-1 fw-bold">{{ re.done_date }}</p>
+              <p class="mb-1 fw-bold">{{ item.id }}</p>
+              <p class="mb-1 fw-bold">{{ item.owner }}</p>
+              <p class="mb-1 fw-bold">{{ item.type }}</p>
+              <p class="mb-1 fw-bold">{{ item.address }}</p>
+              <p class="mb-1 fw-bold">{{ item.size }} <span>m</span></p>
+              <p class="mb-1 fw-bold">{{ item.assigned_to }}</p>
+              <p class="mb-1 fw-bold">{{ item.status }}</p>
+              <p class="mb-1 fw-bold">{{ item.done_date }}</p>
             </div>
           </div>
         </div>

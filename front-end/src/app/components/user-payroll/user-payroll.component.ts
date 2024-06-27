@@ -48,7 +48,9 @@ export class UserPayrollComponent implements OnInit {
   }
 
   onSearchInput() {
-    if (!this.month.trim() && !this.year.trim()) {
+    let month = this.month;
+    let year = this.year;
+    if (!month && !year) {
       this.showAll();
     }
   }

@@ -56,8 +56,8 @@ export class UserLeaveComponent implements OnInit {
   }
 
   // search
-  userLeave: any;
-  userStatus: any;
+  userLeave: string = '';
+  userStatus: string = '';
   userSearch: any = {};
 
   handleForm() {
@@ -78,7 +78,9 @@ export class UserLeaveComponent implements OnInit {
   }
 
   onSearchInput() {
-    if (!this.userLeave.trim() && !this.userStatus.trim()) {
+    let userLeave = this.userLeave.trim();
+    let userStatus = this.userStatus.trim();
+    if (!userLeave && !userStatus) {
       this.showUserData();
     }
   }

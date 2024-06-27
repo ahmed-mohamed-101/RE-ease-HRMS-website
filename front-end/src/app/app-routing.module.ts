@@ -27,6 +27,8 @@ import { AddreComponent } from './components/addre/addre.component';
 import { EditreComponent } from './components/editre/editre.component';
 import { UsermanagereComponent } from './components/usermanagere/usermanagere.component';
 import { DocumentViewComponent } from './components/document-view/document-view.component';
+import { DocumentReComponent } from './components/document-re/document-re.component';
+import { DocAdminComponent } from './components/doc-admin/doc-admin.component';
 
 const routes: Routes = [
   {
@@ -78,6 +80,7 @@ const routes: Routes = [
     component: EditAttendenceComponent,
     title: 'Real Estate Ease',
   },
+  {path:'viewDoc/:id',component:DocAdminComponent},
 
   {
     path: 'userLayout',
@@ -108,6 +111,7 @@ const routes: Routes = [
     component: AdminDescriptionComponent,
     title: 'Real Estate Ease',
   },
+  {path:'document/:id',component:DocumentReComponent}
 ];
 
 @NgModule({

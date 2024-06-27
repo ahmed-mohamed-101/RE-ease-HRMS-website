@@ -16,6 +16,7 @@ import { RedataService } from 'src/app/shared/services/redata.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
 import { Route } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-editre',
   templateUrl: './editre.component.html',
@@ -23,7 +24,9 @@ import { Route } from '@angular/router';
 })
 export class EditreComponent implements OnInit{
 
-  constructor(private _RedataService: RedataService, private _Router: Router, private route: ActivatedRoute) {
+  constructor(private _RedataService: RedataService, private _Router: Router, private route: ActivatedRoute,
+    private _ToastrService:ToastrService
+  ) {
 
      }
 
@@ -82,6 +85,7 @@ export class EditreComponent implements OnInit{
       this._RedataService.editre(this.reId,this.userForm.value).subscribe({
         next: (response) => {
           console.log(response);
+          this._ToastrService.success(response.message)
           this._Router.navigate(['/systemlayout/adminmanagere']);
         },
         error: (error) => {

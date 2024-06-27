@@ -14,12 +14,14 @@ export class DashboardUserComponent implements OnInit {
   ngOnInit(): void {
     this.dashboard();
   }
+
   details: any = {};
   dashboard() {
     this._EmployeesService.dashboard(this.token).subscribe({
       next: (response) => {
         console.log(response);
         this.details = response;
+        this.dashboard
       },
     });
   }

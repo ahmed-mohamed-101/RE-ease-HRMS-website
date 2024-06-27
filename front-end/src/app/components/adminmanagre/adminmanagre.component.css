@@ -1,6 +1,7 @@
 
 section{
   background-color: #FBFBFB;
+  min-height: 100vh;
 
 }
 
@@ -16,7 +17,7 @@ section{
   border-radius: 0.25rem;
 }
 .badge-container {
-  padding: 0.5rem; 
+  padding: 0.5rem;
 }
 
 .test {

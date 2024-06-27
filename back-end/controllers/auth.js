@@ -6,7 +6,8 @@ const admin = require("../models/admin");
 
 const user = require("../models/user");
 
-
+const stripe_private_key = "sk_test_51PBNvfJo7stJPpDUQOdEtMbnn9EydhrSOqZRGk78edK3C91LPrpIiPLDuDWyu3gYV83DkbbFCmnVHLnVZzxOQIgO009hSBteNv"
+const stripe = require("stripe")(stripe_private_key);
 
 exports.adminSignup = async (req, res) => {    
     try {
@@ -69,6 +70,12 @@ exports.adminLogin = async (req, res) => {
         "secretfortoken",
         { expiresIn: "30d" }
     );
+
+    // let customer = await stripe.customers.search({query: `email:"${email}"`,});
+    // console.log(customer) 
+    // let paymentId = customer.data[0].id;
+    // // console.log(paymentId)
+    // await admin.updatePaymentId(paymentId, email);
     
         return res.status(200).json({ token: token, payment_id: storedAdmin.payment_id });
     } catch (err) {
