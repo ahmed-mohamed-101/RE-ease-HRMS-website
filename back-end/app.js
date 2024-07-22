@@ -6,24 +6,24 @@ const cors = require("cors");
 const ports = process.env.PORT || 3000;
 
 //routes
-const auth = require("./routes/auth");
-const payment = require("./routes/payment");
+const auth = require("./routes/auth.js");
+const payment = require("./routes/payment.js");
 
-const adminManageUsers = require('./routes/adminManageUsers');
-const adminManageRE = require('./routes/adminManageRE')
-const adminManageLeaves = require('./routes/adminManageLeaves')
-const adminManageAttendance = require('./routes/adminManageAttendance')
-const adminManagePayroll = require('./routes/adminManagePayroll')
+const adminManageUsers = require('./routes/adminManageUsers.js');
+const adminManageRE = require('./routes/adminManageRE.js')
+const adminManageLeaves = require('./routes/adminManageLeaves.js')
+const adminManageAttendance = require('./routes/adminManageAttendance.js')
+const adminManagePayroll = require('./routes/adminManagePayroll.js')
 const adminDashboard = require('./routes/adminDashboard.js')
 
-const userViewDataAndRecordAttendance = require('./routes/userViewDataAndRecordAttendance')
-const userApplyAndViewLeave = require('./routes/userApplyAndViewLeave')
-const userManageAssignedRE = require('./routes/userManageAssignedRE')
-const userManagePayroll = require('./routes/userManagePayroll')
-const userDashboard = require('./routes/userDashboard')
+const userViewDataAndRecordAttendance = require('./routes/userViewDataAndRecordAttendance.js')
+const userApplyAndViewLeave = require('./routes/userApplyAndViewLeave.js')
+const userManageAssignedRE = require('./routes/userManageAssignedRE.js')
+const userManagePayroll = require('./routes/userManagePayroll.js')
+const userDashboard = require('./routes/userDashboard.js')
 
 //controllers
-const errorController = require("./controllers/error");
+const errorController = require("./controllers/error.js");
 
 //app
 const app = express();
