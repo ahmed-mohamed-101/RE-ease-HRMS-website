@@ -23,12 +23,30 @@ https://documenter.getpostman.com/view/30236412/2sA3QtdBRq
 - manage attendance
 - manage payroll and commission
 
-## System methodology
-
 ## Use case diagram
+<img
+  src="images/use case diagram.png"
+  alt="Alt text"
+  title="..."
+  style="display: block; margin: 0 auto; max-width: 300px">
 
 ## Database Structure (ERD)
+<img
+  src="images/ERD.png"
+  alt="Alt text"
+  title="..."
+  style="display: block; margin: 0 auto; max-width: 300px">
 
 ## Database Schema (Mapping)
+<img
+  src="images/mapping.png"
+  alt="Alt text"
+  title="..."
+  style="display: block; margin: 0 auto; max-width: 300px">
 
 ## Database (Class Diagram):
+<img
+  src="images/class diagram.png"
+  alt="Alt text"
+  title="..."
+  style="display: block; margin: 0 auto; max-width: 300px">
